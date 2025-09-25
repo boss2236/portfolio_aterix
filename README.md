@@ -85,5 +85,4 @@ These are generic workflow files that require your specific API keys and account
 
 ***
 
-If you have any questions or need to extend this system, please open an issue!
-and also there might be flaws  so  it good to write  review
+If you have  an issue! keep in mind that there might be flaws  so  it good to  review

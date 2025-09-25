@@ -1,0 +1,2658 @@
+{
+  "name": "Whatsapp workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## ✅ Phase Two\n\n## Track 1 – Automations & Communication Layer\n## Responsible:\n\n# 1. **Develop a WhatsApp bot for handling client requests**\n\n   * # Offer available time slots and schedule consultations\n\n   * # Understand and classify client intents (consultation, document request, etc.)\n   * # Automatically send reminders before meetings\n   * # Integrate with CRM and calendar\n   * # Act as a personal assistant to Steve:\n    * # Provide summaries of his day\n    * # Show upcoming meetings and contacts\n    * # Allow scheduling, canceling, or rescheduling\n\n",
+        "height": 972,
+        "width": 600,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1344,
+        -80
+      ],
+      "id": "c8c28ae2-bc9d-48a2-b296-f8c28696ec25",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# steve\n\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣠⣤⣴⠶⠶⠾⠻⢻⡟⠓⠶⠶⢤⣤⣄⣀⣀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⠛⠛⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⠀⠀⠀⠀⠀⠉⢹⡇⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⢸⠃⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⣤⠤⠤⠔⠒⠒⠒⠋⠉⢹⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⢸⡃⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣀⣷⠀⠀⠀⠀⠀⠀⠀⠀⢙⠉⢹⠀⣀⣀⢀⠀⠀⠀⠀⢸⠇⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⣄⣀⣤⣄⠀⠀⢰⠒⡞⠉⢹⣽⠦⢿⠈⢉⡇⠀⠀⠀⢸⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠀⣧⢐⣇⣸⡤⠤⢼⠤⠟⠚⠚⢻⠀⠀⠀⠸⣇⠀⠀⠀⢸⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠈⠋⢀⣸⡧⠤⠼⡖⠒⡄⠀⢸⠀⠀⠀⠀⠈⠉⠧⠤⣿⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⢸⡀⢸⣶⣶⡗⠀⣇⠀⢸⠀⠀⠀⠀⢀⣀⣠⡤⢿⣦⣀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣤⣤⣤⣾⣷⣮⣷⡦⠶⠶⠾⠦⠾⡶⠒⢻⡏⠉⠁⠀⠀⢸⠀⠙⠳⣤⡀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣨⡿⠃⣿⠹⠿⠤⣆⠀⠀⠀⣤⠴⠤⠇⠀⢸⡇⠀⠀⠀⠀⢸⠀⠀⠀⠈⣿\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠋⠀⠀⣿⠀⠀⠀⠙⠒⠒⠒⠛⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⢸⠀⠀⠀⠀⣿\n⠀⠀⠀⠀⠀⠀⠀⠀⣢⡿⠓⠦⢤⣀⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⢀⣀⣠⣼⣀⠀⠀⠀⣿\n⠀⠀⠀⠀⠀⠀⢀⣾⠟⠀⠀⠀⠀⠀⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡏⠉⠉⠀⠀⢸⠉⠛⠦⣄⣿\n⠀⠀⠀⠀⠀⣠⡿⠃⠀⠀⠀⠀⠀⣰⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⡇⠀⠀⠀⠀⢸⠀⠀⠀⠈⣿\n⠀⠀⠀⢀⣴⠟⠀⠀⠀⠀⠀⢀⡼⢹⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⣿\n⠀⠀⣠⡿⠁⠀⠀⠀⠀⠀⣠⠏⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⣿\n⢰⣾⣋⣀⠀⠀⠀⠀⢀⠞⠁⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⣿\n⠘⠙⢿⣍⠉⠙⠒⠶⣇⠀⠀⠀⢠⣾⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⣿\n⠀⠀⠀⠙⢷⣄⠀⠀⠈⠳⡄⢠⡟⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⣿\n⠀⠀⠀⠀⠀⠙⠳⠶⠶⠶⠾⠟⠀⢸⡧⠤⠤⠤⠤⠤⠤⢤⡤⠤⠤⠤⠤⣿⠀⠀⠀⠀⢀⣼⡀⠀⠀⠀⣿\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⢾⡷⠀⠀⠀⠀⠿⣶⣖⡋⠉⠉⠀⠉⠙⠲⣤⣿\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠹⡟⠛⢶⣴⠶⠚⠋⠉⠁\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⢸⡇⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⢸⡇⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⢸⡇⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠈⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⢸⡇⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⢸⡇⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⢸⡇⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⢸⡇⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⣸⡇⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣀⣀⣀⣀⣀⣀⣀⣀⣧⣀⣀⣀⣀⣀⣀⣀⣧⠞⢹⡇⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣟⠀⠀⠀⠀⠀⠀⠀⢀⣯⠀⠀⠀⠀⠀⠈⠉⡇⢀⣸⠇⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢈⡿⣤⣤⣤⣤⣤⣤⣤⣼⣿⣤⣤⣤⣤⣤⣤⣤⡷⠛⣁⠀⠀⠀⠀⠀⠀",
+        "height": 780,
+        "width": 460,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -736,
+        112
+      ],
+      "id": "a2d48dae-6560-4ada-adf3-303db1eca848",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "STEVE",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1232,
+        -352
+      ],
+      "id": "30915cf5-0003-4a12-88cf-207177e4c3be",
+      "name": "whatsapp_handler",
+      "webhookId": "5830eed6-a45a-494e-831d-42067e49b007"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ba91f901-2a6f-4f30-811c-835163d07ff0",
+              "leftValue": "={{ $json.message.content.classification }}",
+              "rightValue": "booking",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -608,
+        -528
+      ],
+      "id": "2a8c63a1-0252-4571-b1e9-641b428a3963",
+      "name": "booking"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ba91f901-2a6f-4f30-811c-835163d07ff0",
+              "leftValue": "={{ $json.message.content.classification }}",
+              "rightValue": "cancel",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -608,
+        -336
+      ],
+      "id": "4c38e29c-957a-47c0-a2ea-7a11d81d4b37",
+      "name": "cancel"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ba91f901-2a6f-4f30-811c-835163d07ff0",
+              "leftValue": "={{ $json.message.content.classification }}",
+              "rightValue": "reschedule",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -608,
+        -144
+      ],
+      "id": "59de4382-04a2-4d88-8b68-328d6a001760",
+      "name": "reschedule"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ba91f901-2a6f-4f30-811c-835163d07ff0",
+              "leftValue": "={{ $json.message.content.classification }}",
+              "rightValue": "summary request",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -608,
+        32
+      ],
+      "id": "346dafb7-2364-4383-8170-fbeab06ab6f0",
+      "name": "summary request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "105153f2-aa50-428e-b58c-0e52ea715f01",
+              "leftValue": "={{ $json.message.content.classification }}",
+              "rightValue": "=something else",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        176,
+        432
+      ],
+      "id": "3dcd89f1-1a6d-4998-9da3-720af8db85ba",
+      "name": "something else"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "grant_type",
+              "value": "client_credentials"
+            },
+            {
+              "name": "client_id",
+              "value": ""
+            },
+            {
+              "name": "client_secret",
+              "value": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        208,
+        -432
+      ],
+      "id": "d9ed6b1d-8f4d-4a4e-9593-4417113122d1",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/whatsapp/contacts/send",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('HTTP Request').item.json.access_token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contact_id\": \"{{ $('whatsapp_handler').item.json.body.contact_id }}\",\n  \"message\": {\n    \"type\": \"text\",\n    \"text\": {\n      \"body\": \"{{ $('whatsapp_handler').item.json.body.message.replaceAll('\\\"', '\\\\\\\"').replaceAll('\\n', ' ') }}\"\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        832,
+        -432
+      ],
+      "id": "62183f9c-d7ec-4b5f-9847-b1842b1ba640",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eb632714-d0b2-4921-ad60-f49320d31b7b",
+              "name": "contact_id",
+              "value": "={{ $('whatsapp_handler').item.json.body.contact_id }}",
+              "type": "string"
+            },
+            {
+              "id": "18545957-9d6b-45e5-b196-baa590791707",
+              "name": "message_body",
+              "value": "={{ $('AI AGENT BOOKING').item.json.message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "15a68620-f461-4b03-b91e-f13a2bff3466",
+              "name": "token",
+              "value": "Bearer ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        528,
+        -432
+      ],
+      "id": "49870c7f-8e2a-4ebf-8f11-c24a60c92a83",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7e5d0dbb-5080-4154-a991-0b2bb72e5d9f",
+              "leftValue": "={{ $('whatsapp_handler').item.json.body.phone }}",
+              "rightValue": "+97455608066",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -80,
+        32
+      ],
+      "id": "9fb6b171-0bc8-455b-ab8d-ca4d543a87b8",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7e5d0dbb-5080-4154-a991-0b2bb72e5d9f",
+              "leftValue": "={{ $('whatsapp_handler').item.json.body.phone }}",
+              "rightValue": "+97450343737",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        432
+      ],
+      "id": "84e07b96-335f-4ca4-b997-7756bfd6c669",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "grant_type",
+              "value": "client_credentials"
+            },
+            {
+              "name": "client_id",
+              "value": ""
+            },
+            {
+              "name": "client_secret",
+              "value": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1024,
+        48
+      ],
+      "id": "393be889-5e22-4eeb-bd81-988e08e21482",
+      "name": "HTTP Request12"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/whatsapp/contacts/send",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('HTTP Request12').item.json.access_token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contact_id\": \"{{ $json.contact_id }}\",\n  \"message\": {\n    \"type\": \"text\",\n    \"text\": {\n      \"body\": \"Seems like something went wrong. Try again later\"\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1504,
+        48
+      ],
+      "id": "3653e0b1-a50e-4b9b-8aba-ff45cc5015a3",
+      "name": "HTTP Request13"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eb632714-d0b2-4921-ad60-f49320d31b7b",
+              "name": "contact_id",
+              "value": "={{ $('whatsapp_handler').item.json.body.contact_id }}",
+              "type": "string"
+            },
+            {
+              "id": "18545957-9d6b-45e5-b196-baa590791707",
+              "name": "message_body",
+              "value": "={{ $('Schedule Agent1').item.json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1264,
+        48
+      ],
+      "id": "b03d9f6b-e83a-4047-bc87-fd277bfbedb3",
+      "name": "Edit Fields6"
+    },
+    {
+      "parameters": {
+        "url": "=https://crm.businessstartupqatar.com/rest/people?filter=emails.primaryEmail[eq]:{{ $json.primaryEmail }}&depth=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMjY2ZTdjYy01YWQzLTQwMzUtOTk2Yi02NDA1NDcxMmE2MGIiLCJ0eXBlIjoiQVBJX0tFWSIsIndvcmtzcGFjZUlkIjoiYTI2NmU3Y2MtNWFkMy00MDM1LTk5NmItNjQwNTQ3MTJhNjBiIiwiaWF0IjoxNzUyODM3ODMyLCJleHAiOjQ5MDY0Mzc4MzcsImp0aSI6IjhlZWE3MWRiLTllNjMtNGY1ZC1iOTU0LTFjOTc3MGMwNDU2ZCJ9.-qtCoDuHRRUMfMfepOFl1M3_7fptnqq9CZrg55UyB0Q"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3696,
+        128
+      ],
+      "id": "e76cb7d9-fba1-4395-be94-c714d2244f33",
+      "name": "Get_PersonByEmail"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cbd617fb-d6ab-4906-a171-d711a9be5b5b",
+              "leftValue": "={{ $json.data.people.length }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3904,
+        128
+      ],
+      "id": "4527368b-1246-40d0-9d22-1d1f49a481ec",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://crm.businessstartupqatar.com/rest/people",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=Authorization",
+              "value": "Bearer "
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": {\n    \"firstName\": \"{{ $('Edit Fields7').item.json.FirstName }}\",\n    \"lastName\": \"{{ $('Edit Fields7').item.json.lastName }}\"\n  },\n  \"emails\": {\n    \"primaryEmail\": \"{{ $('Edit Fields7').item.json.primaryEmail }}\",\n    \"additionalEmails\": null\n  },\n  \"linkedinLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"xLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"phones\": {\n    \"primaryPhoneNumber\": \"{{ $json.primaryPhoneNumber }}\",\n    \"primaryPhoneCallingCode\": \"{{ $json.primaryPhoneCountryCode }}\",\n    \"primaryPhoneCountryCode\": \"{{ $json.countrycode }}\",\n    \"additionalPhones\": []\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5152,
+        224
+      ],
+      "id": "7d90e01c-1268-42fa-92bf-c443b0fe78b0",
+      "name": "CreatePerson_Email"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f3281ed7-ab42-49ac-b009-b57d1789d8bc",
+              "name": "FirstName",
+              "value": "={{$('whatsapp_handler').item.json.body.client_name.split(\" \")[0]}}",
+              "type": "string"
+            },
+            {
+              "id": "ce97a18b-e1f7-429e-8fa0-58ad07272d7f",
+              "name": "lastName",
+              "value": "={{$('whatsapp_handler').item.json.body.client_name.split(\" \").slice(1).join(\" \")}}",
+              "type": "string"
+            },
+            {
+              "id": "1504f20d-01f9-4c22-9951-8609a6ed2a49",
+              "name": "primaryEmail",
+              "value": "={{ $('whatsapp_handler').item.json.body.client_email }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3456,
+        128
+      ],
+      "id": "4b0912ea-3bb2-4fb0-bedc-64e1884541b1",
+      "name": "Edit Fields7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "grant_type",
+              "value": "client_credentials"
+            },
+            {
+              "name": "client_id",
+              "value": ""
+            },
+            {
+              "name": "client_secret",
+              "value": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1328,
+        224
+      ],
+      "id": "a0f8cc2d-a2e5-45b8-9406-0bba2f747d87",
+      "name": "HTTP Request14"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/whatsapp/contacts/send",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('HTTP Request14').item.json.access_token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contact_id\": \"{{ $json.contact_id }}\",\n  \"message\": {\n    \"type\": \"text\",\n    \"text\": {\n      \"body\": \"{{ $json.message_body.replaceAll('\\\"', '\\\\\\\"').replaceAll('\\n', ' ') }}\"\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1648,
+        224
+      ],
+      "id": "f929b16d-2289-4a99-9260-6b3a28279c7c",
+      "name": "HTTP Request15"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eb632714-d0b2-4921-ad60-f49320d31b7b",
+              "name": "contact_id",
+              "value": "={{ $('whatsapp_handler').item.json.body.contact_id }}",
+              "type": "string"
+            },
+            {
+              "id": "18545957-9d6b-45e5-b196-baa590791707",
+              "name": "message_body",
+              "value": "={{ $('Summarize Meeting1').item.json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1504,
+        224
+      ],
+      "id": "baf774e7-004f-449f-98cd-e1c028bc4b9b",
+      "name": "Edit Fields10"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $json.body.message }}"
+            },
+            {
+              "content": "=User's Message:  {{ $json.body.message }}\n\nClassify the user's message. Respond strictly with one of the following given words ONLY:\n- booking\n- cancel\n- reschedule\n- summary request\n- something else",
+              "role": "system"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -1008,
+        -352
+      ],
+      "id": "1883010d-3402-4767-ad24-84f8a9bb3c24",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "",
+          "name": ""
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $('whatsapp_handler').item.json.body.message }}"
+            },
+            {
+              "content": "=You are a helpful assistant. Simply analyze the message and give reply to Steve professionally and most importantly, lastly mention, for further assistance, use the menu again. ",
+              "role": "system"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        848,
+        416
+      ],
+      "id": "ce8b2cbb-04e8-4211-b2ce-fa3b0f5d65e6",
+      "name": "Replying Agent2",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1040,
+        544
+      ],
+      "id": "5ba7ad94-9b7a-44e5-bef4-ccb7f996f83a",
+      "name": "Get an event in Google Calendar8",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "eventId": "={{ $fromAI(\"Event_ID\",\"it is the id of the specific event\") }}",
+        "updateFields": {
+          "end": "={{ $fromAI(\"end\",\"it is the meeting date ending time\") }}",
+          "start": "={{ $fromAI(\"Start\",\"it is the meeting date starting time\") }}",
+          "summary": "={{ $fromAI(\"eventName\",\"the name of the calendar event\") }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -384,
+        -208
+      ],
+      "id": "89f8d02d-2208-490c-bf31-0af0c275415b",
+      "name": "Update calendar1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to create a new calendar event.",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "start": "={{ $fromAI(\"Start\",\"it is the meeting date starting time\") }}",
+        "end": "={{ $fromAI(\"end\",\"it is the meeting date ending time\") }}",
+        "additionalFields": {
+          "description": "=Username: {{ $('whatsapp_handler').item.json.body.full_name }}\nEmail: {{ $('whatsapp_handler').item.json.body.client_email }}\nPhone Number: {{ $('whatsapp_handler').item.json.body.phone }}\nEvent Detail: {{ $fromAI('Description', ``, 'string') }}",
+          "summary": "={{ $fromAI(\"eventName\",\"the name of the calendar event\") }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -256,
+        -208
+      ],
+      "id": "4a428643-75c4-45b4-8ab3-84a835592803",
+      "name": "Create event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "eventId": "={{ $fromAI(\"Event_ID\",\"it is the id of the specific event\") }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -128,
+        -208
+      ],
+      "id": "6e036ee0-98bf-4da4-9f4d-6978cba02b6d",
+      "name": "Delete event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "returnAll": true,
+        "timeMin": "={{ $fromAI('After', ``, 'string') }}",
+        "timeMax": "={{ $now.plus({ week: 4 }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        -208
+      ],
+      "id": "27e272c4-dec2-4423-8379-394a750b6d02",
+      "name": "GetAll events1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $('whatsapp_handler').item.json.body.message }}"
+            },
+            {
+              "content": "=You are a helpful assistant and always respond in the language the user speaks. The current date is {{ $now }}.\n\n🧠 When a user sends a message that does not relate to calendar actions, use the LLM to respond normally.\n\n📅 When the user asks to manage the calendar:\n\n🔨 Creating an Event:\n\n- Use the create event tool.\n- Only allow bookings between 8:00 AM and 8:00 PM.\n- Before booking, use the get event tool to check the selected time:\n- If the time is already booked, reject the booking.\n- Book for an alternative time, if the time is already booked.\n\n✍️ For the event description, include the following if available:\n\n- Name of the person\n- Email address\n- Phone number\n- Meeting time\n- Meeting purpose or title (if inferred)\n- Any relevant context (e.g., \"to discuss proposal\", \"follow-up call\")\n\n🗑️ Deleting an Event:\nUse the delete event tool.\n\n🕵️ Getting Event Info:\nUse the get event tool to answer questions about a date or specific event.\n\n📝 Updating an Event:\nUse the update event tool if the user wants to change any details.",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -288,
+        -432
+      ],
+      "id": "004f082a-f968-4a46-b1d6-bf4e6ae06992",
+      "name": "AI AGENT BOOKING",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1056,
+        -432
+      ],
+      "id": "a07d8421-8da7-4235-9bd8-cbf33337f0da",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $('whatsapp_handler').item.json.body.message }}"
+            },
+            {
+              "content": "=RESPOND ONLY WITH THE Phone Country Code OF THE PHONE NUMBER\nFor example a number starting with \"+974\" the output should be \"QA\" \ndo the same for all of the numbers given to you.",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4128,
+        32
+      ],
+      "id": "39338528-c07a-414c-9630-8f2045a415e6",
+      "name": "COUNTRYCODE",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $('whatsapp_handler').item.json.body.message }}"
+            },
+            {
+              "content": "=RESPOND ONLY WITH THE PHONE CALLING CODE OF THE PHONE NUMBER",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4528,
+        32
+      ],
+      "id": "4196c807-c00b-4f0f-9e6b-e1ac3fbd5366",
+      "name": "PHONECODE",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd3f25c1-9606-4135-8c09-e8d2f75620d1",
+              "name": "primaryPhoneNumber",
+              "value": "={{ $('whatsapp_handler').item.json.body.phone.replace(\"+974\", \"\").trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "4514d8a0-0f17-4b34-81e1-6d231d79ac79",
+              "name": "countrycode",
+              "value": "={{ $('COUNTRYCODE').item.json.message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "8e398653-7745-4cef-98c4-bb776113b096",
+              "name": "primaryPhoneCountryCode",
+              "value": "={{ $json.message.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4928,
+        32
+      ],
+      "id": "8554b442-c358-4de2-aee6-f3ef0149f749",
+      "name": "Edit Fields12"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $('whatsapp_handler').item.json.body.message }}"
+            },
+            {
+              "content": "=RESPOND ONLY WITH THE Phone Country Code OF THE PHONE NUMBER\nFor example a number starting with \"+974\" the output should be \"QA\" \ndo the same for all of the numbers given to you.",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4128,
+        224
+      ],
+      "id": "42c93f1e-2da5-4027-afa9-ce273fa083a2",
+      "name": "COUNTRYCODE1",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $('whatsapp_handler').item.json.body.message }}"
+            },
+            {
+              "content": "=RESPOND ONLY WITH THE PHONE CALLING CODE OF THE PHONE NUMBER",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4528,
+        224
+      ],
+      "id": "d2d32184-463c-414e-9dad-75f6f5cbab32",
+      "name": "PHONECODE1",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd3f25c1-9606-4135-8c09-e8d2f75620d1",
+              "name": "primaryPhoneNumber",
+              "value": "={{ $('whatsapp_handler').item.json.body.phone.replace(\"+974\", \"\").trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "4514d8a0-0f17-4b34-81e1-6d231d79ac79",
+              "name": "countrycode",
+              "value": "={{ $('COUNTRYCODE1').item.json.message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "8e398653-7745-4cef-98c4-bb776113b096",
+              "name": "primaryPhoneCountryCode",
+              "value": "={{ $json.message.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4928,
+        224
+      ],
+      "id": "cc6d25b5-8e7d-4c12-bd32-eb9c8c3b09b2",
+      "name": "Edit Fields13"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://crm.businessstartupqatar.com/rest/people/{{ $('Get_PersonByEmail').item.json.data.people[0].timelineActivities[0].personId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=Authorization",
+              "value": "Bearer "
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": {\n    \"firstName\": \"{{ $('Edit Fields7').item.json.FirstName }}\",\n    \"lastName\": \"{{ $('Edit Fields7').item.json.lastName }}\"\n  },\n  \"emails\": {\n    \"primaryEmail\": \"{{ $('Edit Fields7').item.json.primaryEmail }}\",\n    \"additionalEmails\": null\n  },\n  \"linkedinLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"xLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"phones\": {\n    \"primaryPhoneNumber\": \"{{ $json.primaryPhoneNumber }}\",\n    \"primaryPhoneCallingCode\": \"{{ $json.primaryPhoneCountryCode }}\",\n    \"primaryPhoneCountryCode\": \"{{ $json.countrycode }}\",\n    \"additionalPhones\": []\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5152,
+        32
+      ],
+      "id": "6454287f-dc5a-4e65-8d0e-cadce7c30756",
+      "name": "CreatePerson_Email1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1680,
+        48
+      ],
+      "id": "0117e25f-6983-4603-83e1-4017a34b8353",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1792,
+        224
+      ],
+      "id": "a767fffe-64c8-492a-9fc3-a1eb1834bc68",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1392,
+        416
+      ],
+      "id": "d3b8d308-e86d-4736-a202-b155e8d4625c",
+      "name": "Respond to Webhook3"
+    },
+    {
+      "parameters": {
+        "content": "# COMPLEX CRM SYSTEM. DO NOT TOUCH",
+        "height": 80,
+        "width": 736,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4128,
+        -48
+      ],
+      "id": "2555c09b-08e2-4539-a883-b8477134b7a0",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 1536,
+        "width": 6704,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1344,
+        -640
+      ],
+      "typeVersion": 1,
+      "id": "16656640-6676-49f9-a7ca-14a1439b5fbc",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⡷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠋⠈⠻⣮⣳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⡿⠋⠀⠀⠀⠀⠙⣿⣿⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⡿⠟⠛⠉⠀⠀⠀⠀⠀⠀⠀⠈⠛⠛⠿⠿⣿⣷⣶⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣾⡿⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠻⠿⣿⣶⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⣀⣠⣤⣤⣀⡀⠀⠀⣀⣴⣿⡿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣄⠀⠀\n⢀⣤⣾⡿⠟⠛⠛⢿⣿⣶⣾⣿⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠿⣿⣷⣦⣀⣀⣤⣶⣿⡿⠿⢿⣿⡀⠀\n⣿⣿⠏⠀⢰⡆⠀⠀⠉⢿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⢿⡿⠟⠋⠁⠀⠀⢸⣿⠇⠀\n⣿⡟⠀⣀⠈⣀⡀⠒⠃⠀⠙⣿⡆⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠇⠀\n⣿⡇⠀⠛⢠⡋⢙⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀\n⣿⣧⠀⠀⠀⠓⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠋⠀⠀⢸⣧⣤⣤⣶⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⡿⠀⠀\n⣿⣿⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠻⣷⣶⣶⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⠁⠀⠀\n⠈⠛⠻⠿⢿⣿⣷⣶⣦⣤⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⡏⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠉⠙⠛⠻⠿⢿⣿⣷⣶⣦⣤⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣿⡄⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠛⠻⠿⢿⣿⣷⣶⣦⣤⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⡄⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠛⠿⠿⣿⣷⣶⣶⣤⣤⣀⡀⠀⠀⠀⢀⣴⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⡿⣄\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠛⠿⠿⣿⣷⣶⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣹\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠀⠀⠀⠀⠀⠀⢸⣧\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣆⠀⠀⠀⠀⠀⠀⢀⣀⣠⣤⣶⣾⣿⣿⣿⣿⣤⣄⣀⡀⠀⠀⠀⣿\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⢿⣻⣷⣶⣾⣿⣿⡿⢯⣛⣛⡋⠁⠀⠀⠉⠙⠛⠛⠿⣿⣿⡷⣶⣿",
+        "height": 400,
+        "width": 704,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        4656,
+        496
+      ],
+      "typeVersion": 1,
+      "id": "c4e159b7-ce5b-4a1a-9488-b5c942ee7822",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⠀⠀⣠⣴⣶⣿⣷⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⡿⣿⢿⣶⣄⣴⣿⠟⠋⠁⠀⠈⢿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣠⣾⣿⢳⡽⣎⡟⣾⣻⣯⠀⠀⠀⠀⠀⠀⠈⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⢠⣶⣿⡿⢿⣿⣶⣶⣦⣤⣠⣤⣶⣾⣿⠿⠿⠟⢻⡿⣧⢟⣳⣿⣾⣷⣿⣿⡿⣷⣶⣄⣤⣶⣿⢿⡿⣿⣦⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⣾⡟⠀⠀⠀⠀⠀⠈⠉⠛⠛⠋⠁⠀⠀⠀⠀⠀⣿⡿⣵⣫⢿⣿⢧⣿⣟⡳⣟⣧⣛⣿⣿⣿⣼⢏⣾⢳⣿⡆⠀⠀⠀⠀⠀\n⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣟⣶⢫⣟⣻⣿⣿⣯⢳⣛⡶⣛⣾⣿⣟⣿⡿⣎⣯⣿⠇⠀⠀⠀⠀⠀\n⠀⠀⠀⠘⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣼⡿⣼⣣⣿⣿⣿⣟⣿⣣⣿⣿⣿⣿⣿⢿⣸⣻⡿⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⢿⣧⣠⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠋⠉⠀⠀⠙⠛⠛⠉⢿⣾⣳⢭⣯⣷⣿⣧⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠈⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠛⠛⠉⠀⢻⣧⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣼⣿⡷⠶⠿⠛⠓\n⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠙⠉⠉⣿⡇⠀⠀⠀⠀\n⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢺⣿⣿⡆⠀⠀⠀⠀⢠⣤⣿⣷⣤⣦⣤⡄\n⠀⠀⠀⠀⢿⣧⠀⢀⡀⠀⠀⠀⠀⢠⣴⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⡿⠁⠀⠀⠀⠀⠀⢁⣿⡇⠀⠀⠀⠀\n⢠⣴⣶⡾⢿⣿⡟⠛⠛⠀⠀⠀⠀⣿⣿⣿⠆⠀⠀⠀⠀⠀⠀⢠⣴⣶⣶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣼⣿⣀⡀⠀⠀⠀\n⠈⠁⠀⠀⠀⢻⣧⡀⢀⡀⠀⠀⠀⠈⠉⠉⠀⠀⠀⠀⠀⠀⠀⢻⣧⣮⣼⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⡿⠋⠙⠛⡿⠷⠀\n⠀⠀⠀⢀⣤⣶⢿⣿⡋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⢿⣿⣤⣀⡀⠀⠀⠀⠀\n⠀⠀⠀⠙⠋⠀⠀⠙⢿⣦⣴⡾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⡿⠁⠀⠈⠉⠙⢿⣦⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⢀⣴⡿⠛⠿⣿⣶⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣤⣤⣴⣾⡿⠿⠛⠉⢿⣧⠀⠀⠀⠀⠀⠈⣿⡇⠀⠀\n⠀⠀⠀⠀⠀⠰⠟⠋⠀⠀⠀⢀⣬⣽⣿⣿⣿⣿⣿⣿⣾⡾⢿⠿⠿⠿⠟⠛⠛⣿⡿⢯⢿⣿⣄⠀⠀⠈⢻⣷⡄⠀⠀⠀⣸⣿⠁⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣾⣟⠋⠁⣠⣿⣿⡹⡽⣿⣇⠀⠀⠀⠀⠀⠀⠀⣸⣿⣻⢽⡺⣟⣿⣆⠀⠀⠀⠻⣿⣄⣠⣾⠟⠁⠀⠀⠀\n⠀⠀⠀⠀⠀⢠⣾⠟⠉⠉⠘⢿⣷⣰⣿⣿⣼⣷⣟⣾⣻⣷⣤⣤⣀⣤⣤⣾⣿⢏⣷⣯⣷⣭⣿⣿⣧⣠⣤⣶⡿⠟⠋⠁⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⢈⣿⠇⠀⠀⠀⣠⣿⠿⠛⠉⠉⠉⠛⢿⣷⡽⣏⣿⣛⣯⢿⣹⣺⣿⠿⠛⠉⠉⠉⠙⠻⣿⣏⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⣾⡟⠁⠀⠀⠀⠀⠀⠀⠀⠙⣿⣯⣶⢻⣼⢳⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠈⢻⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⢻⣷⣄⣸⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣞⣳⡽⣺⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣧⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠈⠛⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣷⢻⣜⢿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡄⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⢯⣻⢼⣻⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⠇⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⡿⣏⡾⣭⠷⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡿⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣧⡀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣷⣿⣿⣿⣿⣾⣿⣿⣄⡀⠀⠀⠀⠀⠀⣠⣾⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣶⣤⣤⣤⣶⡿⠟⠋⠉⠁⠀⠀⠀⠀⠉⠉⠙⠻⠿⣷⣶⣤⣶⡾⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 592,
+        "width": 544,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        4816,
+        -640
+      ],
+      "typeVersion": 1,
+      "id": "682aef7d-e88d-491d-88d4-2585da31770c",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠒⠶⢤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢶⠀⢀⣾⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⠶⣦⣤⣄⣉⣛⣿⣶⣶⣤⣤⣤⣤⣤⣴⣶⣤⣼⣧⣾⣇⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣈⣽⠿⠛⠛⠛⠳⠤⣍⡉⠒⠀⠀⠀⠀⠈⠉⠙⠛⠿⣶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣴⣾⠋⠁⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢐⣿⣿⣿⠿⠅⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⡑⢆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠛⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⣿⡙⢷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠏⣠⠖⠒⣄⠀⠀⠀⠀⢀⡤⠤⢄⡀⠀⠈⠳⡀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡿⡰⠁⠀⠀⢸⠀⠀⠀⡴⠋⠀⠀⠀⢹⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠇⡇⢠⣿⣿⡞⠀⠀⢰⠁⠀⢀⣤⣄⢈⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⢿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⠀⢣⣸⣿⠟⠁⠀⠀⡆⠀⢀⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣧⣤⡼⠟⠁⠀⠀⠀⠀⢡⠀⢸⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣯⣍⡀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠺⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣷⣄⠀⠀⠀⠀⠀⠀\n⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠱⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣧⡀⠀⠀⠀⠀\n⢸⡟⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⡄⠀⠀⠀\n⣿⠃⠈⠻⢿⣿⣿⣿⣿⣿⠿⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠉⠉⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡄⠀⠀\n⣿⡆⠀⠀⠀⢹⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡀⠀\n⢹⣧⠀⠀⠀⢸⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣧⠀\n⠀⠹⣦⡀⠀⠘⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡟⢹⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡄\n⠀⠀⠈⠙⠶⢤⣹⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⣻⠟⢻⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⢸⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡇\n⠀⠀⠀⠀⠀⠀⠀⠙⠳⣤⣀⠀⠀⠀⠀⠀⠀⢀⣀⡴⠚⠁⠁⢀⡞⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣇⡀⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⠿⣶⠶⢾⣿⠋⠉⠀⠀⠀⢀⡾⠁⠀⠀⢀⣠⠞⠁⠀⠀⠀⠀⠀⠀⣀⣠⣴⣾⣿⣿⣽⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡄⠀⠻⣀⣀⣀⣀⡤⠛⠀⠀⢀⣴⠟⠁⠀⠀⠀⢀⣠⣤⣶⣿⣿⣿⣿⣿⣿⡿⠟⢻⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠁\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣆⠀⠈⠉⠉⠁⠀⠀⣀⣴⣟⠁⠀⢀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣿⠿⠛⠉⠀⠀⠀⠻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠃⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⢶⣶⣤⣶⣶⡿⢟⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣶⣤⣄⣀⣀⣠⣴⡾⠛⠁⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠈⢿⣿⣿⣿⣿⣿⣿⠿⠛⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡿⠿⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 496,
+        "width": 640,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2256,
+        384
+      ],
+      "typeVersion": 1,
+      "id": "f78dbe78-d044-4884-966e-b0fa62ce883f",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "# ME FIGHTING ERRORS\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⡀⠀⠀⠀⠀⠀⢺⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⡇⠀⠀⠀⠀⣠⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⡟⢁⣤⣤⣤⣴⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⣠⣾⣿⣷⣀⠙⢉⣠⣾⣿⣿⣿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⣴⣾⣿⡿⢿⣿⣿⣿⣿⣿⣿⡏⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⣿⡟⠉⠀⠘⣿⣿⣿⣿⣿⣿⠇⠀⠀⢀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⣿⡇⠀⠀⠀⢿⣿⣿⣿⣿⣿⣠⣴⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⣿⣷⣄⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⡿⠋⠙⢿⣿⣦⣴⣶⡷⠀⠀⠀⠀⠀\n⠀⠀⠀⠙⠛⠋⠀⠀⠀⣿⣿⣿⣿⡿⠛⠉⠀⠀⠀⠀⠹⣿⠟⠁⠀⠀⡀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⣀⣶⣼⣿⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⠋⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣹⣿⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⢀⣤⣤⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡟⢿⡀⠀⠀⠀\n⠀⠀⠀⠀⠀⠙⠛⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠋⠀⠈⠃⠀⠀⠀",
+        "height": 400,
+        "width": 336,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3104,
+        -624
+      ],
+      "typeVersion": 1,
+      "id": "12af761f-dc0e-47a0-9fe1-ae5fe274b550",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⡾⠿⠛⠛⠛⠻⠷⣶⣄⡀⠀⠀⠀⠀⠀⠀⢀⡀⡀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⢀⣼⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠙⣷⣄⠀⢀⣤⣶⠿⠟⠛⠻⠿⢷⣦⣀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⣼⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣤⣾⠏⠁⠀⠀⠀⠀⠀⠀⠈⠻⣷⡄⠀\n⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀⠀⢀⣴⣶⣦⣄⠀⣿⣿⠏⠀⢀⣀⠀⠀⠀⠀⠀⠀⠀⠹⣷⠀\n⠀⠀⠀⠀⠀⠀⣿⡂⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⠀⣿⡟⠀⣴⣿⣿⣿⣦⠀⠀⠀⠀⠀⠀⣿⡇\n⠀⠀⠀⠀⠀⠀⢿⣇⠀⠀⠀⠀⠀⠀⠈⠻⠿⠿⠋⣰⣿⡇⠀⠻⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⣿⡇\n⠀⠀⠀⠀⠀⣠⣾⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⣠⣴⡿⠻⣧⡀⠀⠈⠉⠁⠀⠀⠀⠀⠀⠀⣸⣿⠀\n⠀⠀⠀⠀⣼⡿⠋⠀⠙⠿⣷⣦⣤⣤⣴⣶⡿⠟⠉⠀⠀⠹⣷⣄⣀⠀⠀⠀⠀⠀⢀⣠⣶⣿⡅⠀\n⠀⠀⠀⣼⣿⢃⡔⠁⢄⡈⢳⡄⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠿⠿⠷⠿⠿⠟⠋⠁⠹⣿⡀\n⠀⠀⠀⣿⣿⠸⡄⢁⠂⡐⢠⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠛⡉⠙⢦⡀⢹⣧\n⠀⠀⠀⢻⣿⠀⠹⠤⠂⠀⠚⢁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡅⠂⠄⡡⢈⡇⢸⣿\n⠀⠀⠀⠸⣿⡄⠀⠀⠀⠀⠀⢾⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠃⠐⠠⣁⡼⠃⢸⣿\n⠀⠀⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠙⢿⣦⣄⠀⠀⠀⠀⠀⠀⠀⣀⣤⣶⣿⠗⠀⠈⠁⠉⠀⣠⣿⠏\n⠀⣾⡿⠇⠀⠉⠙⠻⢿⣶⣤⣄⣀⠀⠈⠻⢷⣤⡀⢀⣠⣶⣿⠿⠛⠉⠀⠀⠀⠀⠀⣠⣴⣿⠏⠀\n⣾⡿⠃⠀⠀⠀⠀⢀⣴⣿⡿⡿⣿⢿⣿⣿⣾⣿⣿⣿⣿⣿⣶⣴⣦⣶⣶⣶⣶⣾⣿⠿⠋⠁⠀⠀\n⠘⠻⣷⣤⣀⠀⢀⣾⣿⢯⢷⡻⣼⢏⣾⣿⣿⣯⣿⣽⣿⣿⣻⣽⣻⢻⣿⣟⠛⠛⠻⠷⣶⣦⡀⠀\n⠀⢀⣠⣿⣿⣿⣿⠿⣿⣯⣾⡿⢿⣯⣿⣟⣾⣽⣿⣟⣾⣿⣳⡞⣽⣏⡾⢿⣧⠀⠀⠀⢀⣼⣿⠀\n⠀⣸⣿⠁⠈⠙⠉⠀⠈⠙⠋⠀⢸⣿⣞⡿⡽⣞⣧⢟⣟⡷⣻⣼⢳⡾⡽⢯⣿⣆⠀⣀⣽⡏⠁⠀\n⠀⠸⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣾⣱⣟⡾⣜⢯⢾⣱⢷⣺⢻⣼⣛⡿⣼⣿⣾⡟⠛⠁⠀⠀\n⠀⠀⠻⣧⡀⠀⠀⠀⠀⠀⢀⣴⣿⠿⠿⠿⢿⣷⣿⣾⣾⣿⣾⣿⣾⣭⣿⣵⣿⣿⡏⠁⠀⠀⠀⠀\n⠀⠀⠀⠙⠻⢶⣶⣶⣶⣶⠿⠛⠁⠀⠀⠀⠰⣿⠁⠀⢀⣩⣈⠉⠉⠉⣉⠉⠉⠙⢷⡀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣶⣾⠿⠛⠻⣧⣴⣾⠟⠻⢶⣶⡿⠃⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 496,
+        "width": 432,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -336,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "150f7c7b-1e48-4dfc-819e-7d5f8a6e9e70",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠎⠉⢂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠎⠀⡄⠈⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⡎⠉⠀⠀⠀⠀⡰⢳⡀⠈⠉⠀⠀⠒⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠢⠀⠈⠫⡅⠀⠀⢈⠽⠋⠀⡠⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠃⢀⣇⠤⠤⣺⠀⠰⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⠁⠀⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀⠈⠀⣠⢄⠈⠁⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠊⢀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠣⠤⠒⠉⠀⠀⠁⠢⠀⠜⠀⠀⠀⡖⠐⠂⠠⠄⣀⠀⠀⠀⠀⠀⠀⡠⠊⠀⡠⠊⡇⠀⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⡀⠀⢤⢀⣀⠀⠁⠐⠂⠠⠎⠀⡠⠊⠀⠀⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⡄⠈⢆⠀⠉⠑⠒⠠⠤⡠⠞⠀⠀⠀⠀⠀⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠄⠈⢢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠀⠘⠢⢄⡀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢄⠀⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠒⠤⣀⠀⠁⠂⠄⡀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠔⠂⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡨⠂⢀⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠒⢤⡀⠀⠉⠂⡄\n⠀⠀⠀⠀⠀⠀⢀⠀⢀⠈⠢⠀⠀⠀⠀⠀⠀⠀⡀⠤⠀⢄⠀⠀⠀⠀⠀⡔⠁⢠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠠⠔⠒⠉⠁⣀⠤⠄⠒⠁\n⠀⠀⠀⠀⠀⠀⢸⠀⢸⠳⢄⠀⠑⠄⠤⠐⠈⠁⢀⠀⢀⠎⠀⠀⠀⢀⠎⠀⡰⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡎⠉⢀⡀⠤⠐⠂⠉⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⢸⠀⢸⠀⠀⠑⢄⣀⡠⠤⠒⢩⠃⠀⡌⠀⠀⠀⡠⠃⢀⣞⣀⠤⠤⠔⠒⠒⠉⠲⡀⠀⠀⠀⢠⠇⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⡀⠜⠀⢀⠀⠀⠀⠀⠀⠀⠀⢀⠆⠀⡜⠀⠀⠀⠔⠀⠀⠀⢀⣀⡀⠤⠄⠐⠒⠢⡀⠈⢆⠀⠀⢸⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⢀⠠⠒⠉⢀⡠⠔⠉⠀⠀⠀⠀⠀⠀⠀⣎⠀⠸⡁⠀⠀⠀⠈⠀⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠈⢄⠀⠱⡄⠘⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⡎⠀⠀⠐⠪⠥⣀⣐⠀⠀⠀⠀⠀⠀⠀⠀⠈⠢⡀⠈⢂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⡀⠈⠇⠀⡎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠈⠀⠒⠀⠤⢀⣀⠀⠉⢱⠀⠀⠀⢀⠤⠤⠀⣀⣘⣄⠀⠑⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢂⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠘⡄⠀⡆⠀⡠⠃⢀⡀⢀⣀⡀⠀⠀⠀⠈⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢃⠀⢡⡐⠁⢠⠎⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠸⠀⠈⠀⡠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⢇⠀⡔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀₊ ⊹",
+        "height": 480,
+        "width": 560,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1232,
+        -560
+      ],
+      "id": "9b8ea86c-ca96-4aa1-b377-258b59a605f9",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠀⠀⠈⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠁⠀⠀⠊⠉⠀⠁⠀⣀⠄⠚⠁⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠋⠀⠀⠙⢿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠀⠰⠂⠀⢉⠀⠜⠂⠥⠉⠃⠠⠉⠀⠀⠈⡀\n⠀⠀⠀⠀⠀⠀⠀⠀⣸⡇⠀⠀⠀⠀⠀⠙⢿⣦⡀⠀⠀⢀⣀⣀⣠⣤⣀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠀⢀⠄⢀⠀⡇⠂⠈⠑⠁⠀⠁⠀⠀⠀⠀⠀⣀⠀⣐⠄⠐⠁\n⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠀⠀⠙⠿⠿⠟⠛⠛⠋⠉⠉⠛⣷⣤⠄⣒⡒⡠⠲⢒⠓⠆⠛⠈⠀⠀⠀⠀⠀⠀⡠⢄⢴⣚⠃⢃⠀⠭⠠⠃⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠙⡒⠊⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠖⢲⣶⠑⠊⠀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⣀⣤⣶⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⠃⠀⠀⢀⢀⣄⠄⡌⠲⠜⠋⠉⠉⠈⠈⠀⠀⠀⠈⠀⠀⠀⠈⠀⠈⠀⠀⠀⠁⠀⠂\n⠀⣠⣶⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡿⠀⠝⠋⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⢸⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⢆⠀⣀⣢⣤⠆⢂⡐⢑⡂⡢⠱⠞⠒⠈⠒⠀⠂⠓⠒⠂\n⢸⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡀⠀⠀⠀⡀⠭⠿⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠙⠿⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡐⠺⠁⠁⠀⡀⣠⡀⡂⠖⠺⠘⠘⠐⠉⠚⠙⠓⠚⠚⠙⠍⠙⠁⠚⠏⠏⠉⠁⠀\n⠀⠀⠀⠀⠉⠛⠿⣶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣘⠚⠲⠗⠒⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠄\n⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⢀⡐⢂⠤⠆⣄⡐⢆⠢⠀⡐⢜⠖⢈⠩⠁⣂⢀⡀⠀⠀⠀⠐⠀⠀⣀⡠⢤⣀\n⠀⠀⠀⠀⠀⠀⠀⠀⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣶⣦⣤⣤⣄⣀⣀⣤⡿⠋⠂⠁⠀⠁⠀⠀⠀⠁⠀⠀⠀⠀⠀⠁⠀⠉⠈⠁⠉⠚⠈⠐⠈⠂⠒⠚⠃⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢹⡇⠀⠀⠀⠀⠀⣠⣾⠏⠀⠀⠀⠈⠉⠉⠙⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣄⠀⠀⣠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 400,
+        "width": 688,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        432,
+        -352
+      ],
+      "typeVersion": 1,
+      "id": "06aa38ab-4193-4bcd-8ad0-9bd7e7d073ee",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣠⣤⣤⣼⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀\n⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀\n⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀\n⠀⠀⠀⠘⣿⣿⣿⣿⠟⠁⠀⠀⠀⠹⣿⣿⣿⣿⣿⠟⠁⠀⠀⠹⣿⣿⡿⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⣿⣿⣿⡇⠀⠀⠀⢼⣿⠀⢿⣿⣿⣿⣿⠀⣾⣷⠀⠀⢿⣿⣷⠀⠀⠀⠀⠀\n⠀⠀⠀⢠⣿⣿⣿⣷⡀⠀⠀⠈⠋⢀⣿⣿⣿⣿⣿⡀⠙⠋⠀⢀⣾⣿⣿⠀⠀⠀⠀⠀\n⢀⣀⣀⣀⣿⣿⣿⣿⣿⣶⣶⣶⣶⣿⣿⣿⣿⣾⣿⣷⣦⣤⣴⣿⣿⣿⣿⣤⠤⢤⣤⡄\n⠈⠉⠉⢉⣙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⣀⣀⣀⡀⠀\n⠐⠚⠋⠉⢀⣬⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣥⣀⡀⠈⠀⠈⠛\n⠀⠀⠴⠚⠉⠀⠀⠀⠉⠛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠋⠁⠀⠀⠀⠉⠛⠢⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 448,
+        "width": 384,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        64,
+        -352
+      ],
+      "typeVersion": 1,
+      "id": "c856bc57-3388-4dfd-a5b5-33617cbff2f3",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣿⠟⠉⠉⠻⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⠿⠉⠀⠀⠀⠀⠀⠹⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣾\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣾⡿⠛⠉\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⡿⠟⠁⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣴⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣷⣶⣶⣦⣤⣤⣄⡀⠀⢀⣠⣾⣿⠿⠋⠀⠀⠀⠀⠀⣠\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⠶⠞⣿⠟⠋⠉⠉⠙⣻⠿⢿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⢀⡼⠁\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⠁⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠟⠁⢠⡞⠁⠀⠀⠀⢀⡴⠋⠀⢀⡿⠋⠁⠀⠀⠀⠀⠀⠀⠀⡞⠁⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣼⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠃⠀⢠⠏⠀⠀⠀⠀⣰⠏⠀⠀⣠⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡥⠤⡀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣇⠀⣠⡏⠀⠀⠀⠀⣼⠁⠀⠀⣰⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠁\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣄⣄⣼⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡶⠋⠀⠀⠀⠀⢸⣧⠀⠀⣴⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢧⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠀⠀⠀⠀⣾⡿⠿⣿⡿⠁⠀⠀⠀⠀⠀⠀⣠⣶⣶⣶⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳\n⠀⠀⠀⠀⠀⠀⢀⣾⠿⠛⢿⣿⣷⣄⡀⣿⠃⠀⠈⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⣠⣤⣦⣼⣿⠀⠀⠀⣿⣿⣿⣿⣿⣦⣀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⢀⣀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣾⣿⣿⣿⢷⣄⠀⠀⠀⠀⠀⠀⠀\n⠀⣠⣾⡿⠋⠉⠉⠁⠀⠀⠀⠀⠉⢯⡙⠻⣿⣿⣷⣤⡀⠀⠀⠀⠀⢿⣿⣿⣿⣿⡿⠃⢀⡤⠖⠋⣉⣉⣉⣉⠉⠉⠒⠦⣄⠀⠀⠀⢀⡟⡿⢿⣿⣟⣻⣮⣿⠀⠀⠀⠀⠀⠀⠀⠀\n⣾⣿⠋⠀⠀⠀⠀⣀⣀⠀⠀⠀⠀⠀⠙⢦⣄⠉⠻⢿⣿⣷⣦⡀⠀⠈⠙⠛⠛⠋⠀⢰⠟⡇⠀⠀⠈⠻⡿⠛⠁⠀⠀⠀⠈⠳⣄⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀\n⣿⡇⠀⠀⠀⣴⠟⣫⣿⣿⣄⠀⠀⠀⠀⡶⢌⡙⠶⣤⡈⠛⠿⣿⣷⣦⣀⠀⠀⠀⠀⡇⠀⢻⣄⠀⠀⣠⢷⠀⠀⠀⠀⠀⡶⠀⠘⡆⠀⠀⠻⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀\n⣿⡇⠀⠀⢸⣟⢸⣿⣿⣿⣿⠀⠀⠀⠀⡇⠀⠈⠛⠦⣝⡳⢤⣈⠛⠻⣿⣷⣦⣀⠀⠀⠀⠀⠈⠙⠋⠁⠀⠛⠦⠤⠤⠚⠁⠀⠀⢳⠀⠀⠀⠈⠛⠿⠿⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀\n⣿⡇⠀⠀⠈⢿⣞⣿⣿⣿⠏⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠙⠳⢬⣛⠦⠀⠙⢻⣿⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⣿⡇⠀⠀⠀⠀⠉⠛⠋⠁⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠈⣿⠉⢻⣿⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⣿⡇⠀⠀⠀⠀⠀⣠⣄⠀⠀⢰⠶⠒⠒⢧⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⢸⡇⢸⡟⢿⣷⣦⣴⣶⣶⣶⣶⣤⣔⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⣿⡇⠀⠀⣤⠀⠀⠿⠿⠁⢀⡿⠀⠀⠀⡄⠈⠙⡷⢦⣄⡀⠀⠀⠀⠀⠀⠀⠀⣿⠀⢸⡇⢸⡇⠀⣿⠙⣿⣿⣉⠉⠙⠿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⣿⡇⠀⠀⠙⠷⢤⣀⣠⠴⠛⠁⠀⠀⠀⠇⠀⠀⡇⢸⡏⢹⡷⢦⣄⡀⠀⠀⠀⣿⡀⢸⡇⢸⡇⠀⡟⠀⢸⠀⢹⡷⢦⣄⣘⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⣿⣿⠢⣤⡀⠀⠀⠀⠀⠀⠀⣠⠾⣿⣿⡷⣤⣀⡇⠸⡇⢸⡇⢸⠉⠙⠳⢦⣄⡻⢿⣾⣧⣸⣧⠀⡇⠀⢸⠀⢸⡇⢤⣈⠙⠻⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⢹⣿⣷⣌⡉⠛⠲⢶⣶⠖⠛⠛⢶⣄⡉⠛⠿⣽⣿⣶⣧⣸⡇⢸⠀⠀⠀⠀⠈⠙⠲⢮⣝⠻⣿⣷⣷⣄⣸⠀⢸⡇⠀⠈⠁⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠈⠙⠻⢿⣷⣶⣤⣉⡻⢶⣄⣀⠈⠙⠳⢦⣈⡉⠻⢿⣿⣷⣾⣦⡀⠀⠀⠀⠀⠀⠀⠈⠙⠲⢭⣛⠿⣿⣷⣼⡇⠀⠀⠀⠀⠈⣿⡇⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⣀\n⠀⠀⠀⠀⠀⠈⠙⠻⢿⣿⣷⣶⣽⣻⡦⠀⠀⠈⠙⠷⣦⣌⡙⠻⢿⣟⣷⣤⣀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠳⢯⣻⡇⠀⠀⠀⠀⠀⢸⣿⠀⣀⠀⠀⠀⠀⠈⠳⣄⠀⠀⠀⢀⡏⠙⠛\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠻⢿⣿⣿⣿⣶⣤⣤⣤⣀⣈⠛⠷⣤⣈⡛⠷⢽⡻⢶⣄⣀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠳⢤⣀⠀⠀⢸⣿⡀⠈⠳⢤⣀⣀⣰⠃⠈⠛⠶⠶⠿⠃⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢈⣿⡿⠛⠉⠙⠛⠛⠻⢷⣦⣄⣩⣿⠶⠖⠛⠛⠛⠛⠛⠛⠿⢷⣶⣦⣄⠀⠀⠀⠀⠉⢻⣶⣿⣿⠇⠀⠀⠀⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⠁⠀⠀⠀⠀⠀⠀⠀⣿⣿⠋⠀⠀⠀⠀⠀⣠⠖⠂⠀⠀⠀⠈⠙⠿⣿⣦⡄⠀⠀⣸⣿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⣰⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⢿⣶⣄⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⢸⣧⠀⠀⢀⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠙⢿⣿⣇⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡿⠦⠠⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠧⠤⠄⠙⡿⠿⠦⠤⠤⠤⠤⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 688,
+        "width": 704,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3440,
+        -624
+      ],
+      "typeVersion": 1,
+      "id": "fa72aa8f-5af3-48f0-9cdd-e869664393ce",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⡾⠛⠀⠈⢻⣦⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡾⠛⠉⠁⠀⠀⠀⠀⠀⠉⠉⠛⠛⠳⢶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⣠⣾⡾⣷⣦⣠⡾⣟⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⢶⣤⡀⠀⢀⣠⣼⡄⠀⠀⠀⠀\n⠀⠀⠀⠀⢰⣿⠉⢗⢦⠈⣿⡶⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⠿⠋⠉⢸⣷⠀⠀⠀⠀\n⢀⠀⠀⠀⢼⣿⡉⠻⠇⠀⠀⠀⠀⠀⠀⣾⣷⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠇⡀⠀⠀⠀\n⠺⠷⠦⢤⣼⣿⣆⡀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠘⠛⢿⡶⠆⠀⠀⠀⢀⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡟⠀⠀⠀⠀⠀\n⠀⠀⠀⢀⣤⡽⠿⠟⠛⠲⠶⣤⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢺⣿⠘⠀⠀⠀⠀⠀⠀⠀⠀⠺⣧⠀⠀⠀⠀⠀\n⠀⠀⣴⠋⠁⠀⠀⠀⠀⠀⠀⠀⠈⠙⢯⠉⠛⠳⠶⠦⣤⣄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣧⠀⠀⠀⠀\n⠀⠀⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣇⣴⠶⠛⠛⠛⠛⠛⣿⠓⠀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⣿⡆⠀⠀⠀\n⠀⠀⢳⡛⠷⣤⣀⣀⣀⣀⣀⣀⣤⠶⣿⡟⠁⠀⠀⠀⠀⠀⣰⠻⢦⣄⣠⣤⡤⠴⣾⡋⠙⠛⠲⠦⠤⣤⣀⣸⣇⠀⠀⠀\n⠀⠀⠈⣿⠲⣤⣭⣉⣉⣙⣹⣭⣶⣾⢿⡇⠀⠀⠀⠀⠀⠚⠁⣴⠃⢹⠀⠀⠀⠀⠈⢳⡀⠀⠀⠀⠀⠀⠈⠉⠉⠛⠲⠆\n⠀⠀⠀⢹⡆⠸⡆⠈⠉⢹⠁⠀⣼⠇⢸⡿⣆⠀⠀⠀⠀⠀⠀⠁⠀⠘⠀⠀⠀⠀⠀⢈⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⣷⠀⡇⠀⠀⢸⠀⠀⣿⠀⠘⣷⣌⠓⢦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠸⣧⢻⡀⠀⢸⠀⢰⣇⡀⠀⡇⢿⠳⢦⣀⣉⠛⠓⠲⠶⠶⠶⡚⣛⣽⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠙⠿⣷⣶⣾⣿⠿⠋⠙⠻⡇⣿⠀⠀⠀⢹⠛⠛⠛⠛⢛⡟⠋⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⣾⠀⠀⠀⢀⡼⠀⣼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣷⣄⣠⡇⠀⠀⠀⡾⢁⡾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠿⠿⠿⠿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 416,
+        "width": 512,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2896,
+        480
+      ],
+      "typeVersion": 1,
+      "id": "6e4a32a7-ebc8-41a4-8ce2-261f0c5b84d9",
+      "name": "Sticky Note13"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠞⠳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⡤⠼⠃⠀⠀⠘⠦⠤⠤⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⠴⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠳⢤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠞⠉⠉⠳⣶⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⣄⣀⣠⠤⠶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠒⠲⠦⢤⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⠀⠀⠀⠀⠹⠆⠀⠀⠀⢠⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠈⠉⠙⠒⠲⠤⠤⣀⣀⠀⠀⢷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠟⠀⣤⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⣤⠤⣄⠀⠀⠀⠀⠀⢸⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⢻⣷⠦⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠁⠀⠀⠀⣾⣦⣼⠁⠀⠈⠳⡄⠀⠀⠀⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠋⠈⠉⠑⢲⡿⠯⢭⣓⣒⠦⠤⣄⣀⡀⠀⠀⠀⠀⠀⠀⠉⠁⡇⠀⠀⠀⠀⠙⠀⠀⠀⢷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠋⠀⠀⠀⠀⣰⠏⠀⠀⠀⢀⡼⠋⠛⠒⠢⣭⣽⣗⣒⠦⠤⣤⣀⣀⣧⠀⠀⠀⠀⠀⠀⠀⠀⠈⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠿⠦⢤⣄⣀⣀⡼⠁⠀⠀⠀⣠⠟⠀⠀⠀⠀⣴⠛⠀⠀⠈⠉⣻⠖⠶⠬⣍⣛⣒⠶⠤⣄⣀⣀⠀⠀⢻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡟⠙⠓⠲⠦⢤⣀⣉⠉⠛⠒⠲⠴⣧⣀⣀⠀⢀⡼⠁⠀⠀⠀⢀⡴⠃⠀⠀⠀⢠⡟⠉⠉⠓⠒⣾⡈⠉⠑⠚⠶⠤⢤⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣧⣀⠀⠀⠀⠀⠀⠈⠉⠙⠓⠒⠤⠤⣤⣉⡉⠛⠓⠢⠤⢤⣠⣞⡀⠀⠀⠀⣰⠏⠀⠀⠀⠀⡴⢋⡇⠀⠀⠀⠀⠀⠀⠀⠉⠉⠑⠒⠲⠤⢤⣀⣀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠒⠦⠤⣄⣀⣀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠒⠦⠤⢤⣈⣉⠙⠓⠲⠧⠤⣄⣀⣀⡞⢡⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠓⠒⠦⠤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠓⠲⠦⠤⣤⡟⣠⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠒⠒⠤⢤⣄⣀⠀⠀⠀⠀⠀⠀⣞⣼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 336,
+        "width": 688,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1584,
+        544
+      ],
+      "typeVersion": 1,
+      "id": "1d2ac595-eb53-466e-9fb0-56ccb662df45",
+      "name": "Sticky Note14"
+    },
+    {
+      "parameters": {
+        "content": "⣿⣿⠿⢛⣩⣭⣭⣙⠻⣿⣿⡿⢛⣉⣭⣍⣛⠻⣿⣿\n⣿⢋⣾⣿⣿⣿⣿⣿⣷⡈⠏⣴⣿⣿⣿⣿⣿⣷⡘⣿\n⡟⢸⣿⣿⣿⣿⡏⠀⠙⡇⢰⡏⠉⠉⣿⣿⣿⣿⡇⢹\n⣿⠸⣿⣿⣿⣿⣷⣤⣶⠇⡄⢷⣦⣴⣿⣿⣿⣿⠇⣼\n⠏⣴⣝⠻⠿⠿⠿⠛⣡⣾⣿⣮⣛⠻⠿⠿⢛⣡⡌⢿\n⢰⣿⣿⣿⡳⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⡟⣿⠘\n⠸⣧⡻⣿⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡹⣿⣿⡾⢰\n⣧⡙⠿⣿⣿⣧⣍⠻⢿⣿⣿⠿⢛⣩⣾⣿⣿⠟⣡⣾\n⣿⠟⣃⡤⢈⠍⠉⣉⠀⠉⠁⢐⡛⠋⣉⢩⣐⠺⢿⣿\n⣁⢺⡿⢡⡟⠀⢀⣿⡀⠀⠀⣸⣇⠀⠸⣦⢻⣿⢂⣿\n⣿⣮⡁⡿⠁⠀⣸⣿⡇⠀⠀⣿⣿⠀⠀⢻⡆⢩⣼⣿\n⣿⡟⢡⠶⠦⣤⡬⢭⣥⠄⢤⣬⡭⣤⣤⠤⣤⠘⣿⣿\n⣿⣿⣶⣶⣷⣤⣴⣶⣥⣾⣦⣥⣶⣤⣵⣶⣶⣶⣿⣿",
+        "height": 272,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -992,
+        -624
+      ],
+      "typeVersion": 1,
+      "id": "1787211b-8367-451d-9fb9-9ebe09aa8878",
+      "name": "Sticky Note15"
+    },
+    {
+      "parameters": {
+        "content": "⠀⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⠀\n⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀\n⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢟⣛⣛⣛⣛⣛⣛⡻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀\n⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⣶⣬⣍⣛⣛⣭⣥⣶⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀\n⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⢃⣿⣿⣿⣿⣿⣿⣿⣿⡌⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀\n⠀⡿⣩⣝⠿⣿⣿⣿⣿⡟⢸⣿⣿⣿⣿⣿⣿⣿⣿⣇⢻⣿⣿⣿⣿⡿⣋⣍⢿⠀\n⠀⡇⢿⣿⣷⣮⣍⡛⠛⣡⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡌⠛⣛⣩⣥⣾⣿⣿⢸⠀\n⠀⣿⡌⢿⣿⣿⣿⣇⠀⠙⠿⢿⣿⣿⣿⣿⣿⣿⡿⠟⠃⢀⣾⣿⣿⣿⡿⢃⣿⠀\n⠀⣿⣿⣦⡛⢿⣿⣿⣷⣤⣄⣀⡀⠀⠀⠀⠀⣀⣀⣤⣴⣿⣿⣿⣿⢟⣴⣿⣿⠀\n⠀⣿⣿⣿⡏⣴⣭⣛⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠟⣛⣩⡐⣿⣿⣿⣿⠀\n⠀⣿⣿⣿⢱⣿⣿⣿⣿⣷⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣾⣿⣿⣿⡇⢻⣿⣿⣿⠀\n⠀⣿⣿⡟⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⠀\n⠀⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⡟⠛⣿⣿⣿⣿⣿⣿⣿⠛⢻⣿⣿⣿⡆⣿⣿⣿⠀\n⠀⣿⣿⢰⣿⣿⣿⣿⣿⣿⣿⣷⣾⣿⣯⣙⢋⡙⣋⣽⣷⣿⣿⣿⣿⣧⢸⣿⣿⠀\n⠀⠿⠿⠸⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠘⠿⠿⠀",
+        "height": 320,
+        "width": 352,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        672,
+        576
+      ],
+      "typeVersion": 1,
+      "id": "a88e78ff-2208-4e93-9bc4-519c24d76bf7",
+      "name": "Sticky Note16"
+    },
+    {
+      "parameters": {
+        "content": "⡟⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⡄⠃⡘⠻⣷⣿⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⡇⠟⠠⠀⠀⠙⠻⣿⣿⣿⣷⣷⣷⣿⣿⣿⣯⣯⣿⣽⣽⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿\n⣿⡄⠀⠉⠄⠀⠀⠀⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣟⣽⣿⣿⣿⣿⣿⣿⣿⠟⠋⣠\n⣟⣿⡄⠀⠀⠘⠦⣄⣀⠀⠀⠉⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣿⣿⣿⣿⣿⣿⣿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠋⣀⣴⣿⣿\n⣿⣿⣿⣄⠀⠀⠀⠈⠈⠓⢒⠦⡄⣀⠀⠈⠙⠛⠛⠛⠛⠋⠛⠛⠉⠉⠀⠀⠈⠀⠈⠀⠁⠀⠀⠀⢀⠀⠀⠈⠀⠁⠈⢀⡀⢀⠀⠉⠉⠛⠛⠛⠉⠉⢀⣀⣠⢤⡘⣯⣟⠻⠉\n⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠀⡀⠀⠀⠀⣀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠠⠀⠀⢠⣤⡄⠀⠘⠤⣇⠼⢀⠀⠀⢠⣀⣀⠇⠘⣧⢻⣼⣻⡼⠛⠀⣼\n⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠐⠂⠀⠠⣤⢤⠀⠀⠀⢀⣔⡺⣵⢫⣤⢀⠀⠁⠂⠀⠀⠀⠀⠀⠀⠀⢠⢿⣿⣿⣧⡄⠀⠈⣷⣮⣤⣄⠀⠰⠍⢾⡱⢌⣷⣺⡅⠛⠀⣼⣿\n⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠀⠀⢀⡠⢄⡤⡽⣎⡀⠀⠰⣍⠾⣱⢧⡻⣜⢯⡳⢆⡀⠀⠀⠀⢠⡄⡴⣦⢶⣻⣟⣿⣳⡷⠀⠀⢸⣿⣿⣌⣀⣄⡀⠀⢿⣹⢶⣟⠂⠁⣼⣿⣿\n⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⡌⢧⡙⢯⢾⣽⣳⣥⢆⡾⣬⢳⡹⢧⡛⣜⡣⡝⠂⠀⡔⣢⡙⢦⣝⣳⢯⣏⢷⣻⣞⣿⣽⣃⣠⣾⣿⣿⣿⣿⢿⣷⣆⠀⠙⠫⣦⠀⢸⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠈⠀⠀⠀⠈⠈⠛⠽⣮⡙⢷⣫⠽⣆⠉⠦⠑⠀⡄⢳⡘⢥⠚⡱⣞⡵⢫⠀⣻⢾⣽⣞⣿⠿⠙⠃⠉⠁⠀⠀⠁⠈⠙⠣⠸⠠⠷⡀⢸⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⢿⣜⡻⡴⡀⠀⠀⡰⠌⡥⢘⡌⠃⡼⣱⠞⡅⠀⣿⣿⣿⡛⠼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠄⠁⢸⣿⣿⣿\n⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣽⢣⡅⠀⠀⠰⡁⢆⠣⠄⢠⠳⣥⠛⠀⢸⣿⣿⣿⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⡄⠁⠀⢸⣿⣿⣿\n⣿⣿⣿⣿⠇⠀⠀⢀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡳⢆⠀⠀⢡⠘⡄⠃⠀⢨⣛⢼⣫⢴⢻⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡿⣷⠀⢸⣿⣿⣿\n⣿⣿⣿⣿⠀⠀⠀⡜⡠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡙⡆⠀⠀⢣⢘⠰⠁⠀⢢⢃⡴⡹⢮⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⠃⠀⢿⣿⣿\n⣿⣿⣿⣿⠀⠀⠀⠈⣁⢦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠓⠀⠀⢀⠂⠌⢂⠁⢀⠀⠈⢖⡩⠓⡜⢫⠗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣿⠿⠉⠀⠀⠸⣿⣿\n⣿⣿⣿⣿⠀⠀⠀⠀⠀⠈⠙⠲⠦⣤⢤⡤⣤⡤⣤⠠⠀⠀⠀⠀⠀⠀⢀⠂⠌⠀⢄⠸⣄⠊⡄⠀⠰⡉⠔⡂⠆⠀⠀⠑⣜⣲⣤⣤⣤⣤⡶⢶⠛⠏⠉⠀⢀⡀⠀⡀⠀⣿⣿\n⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠹⠙⠇⠃⠀⠀⠀⠀⠀⠀⠀⢂⠰⠀⢎⡲⣌⠱⡀⢆⡑⠌⢠⠑⡌⠀⠀⠀⠀⠙⠋⠉⠉⠀⠀⠀⠀⢀⠰⣌⢣⡜⣡⠃⠀⣿⣿\n⣿⣿⣿⡇⠀⠀⠀⠀⠀⠈⢀⠁⠠⠀⢀⠀⡀⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⡊⢥⡈⢷⣌⠓⡌⢆⡘⢌⠰⡈⢄⡀⠀⠀⠀⠀⠂⢀⡀⠄⠀⡉⠜⡬⢣⢤⣃⢌⣀⠤⠀⣻⣿\n⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠢⡉⠖⣭⢒⠮⡑⢎⠦⡙⠂⠁⠀⣀⠤⣤⠀⠀⠀⠘⢤⡘⠤⡁⢜⡸⢔⠫⡔⣩⢮⠝⠂⠀⣿⣿\n⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠄⡁⠐⡀⠆⠀⠀⠀⠀⠀⠀⢂⠡⠘⣀⠈⡀⠀⠀⠀⠀⠀⠀⠰⠁⠉⢠⡴⣶⣄⠀⠀⠓⡜⢤⠣⢞⡩⢖⠄⠑⠋⠀⠠⠀⣿⣿\n⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⢀⠠⠁⠠⢀⠣⡘⠌⣁⢂⠀⠀⠀⠀⠀⠀⠡⠀⠒⠀⡁⠂⠌⠀⠁⠀⠀⠀⣠⣿⣻⣷⣯⢿⠤⣀⢈⠦⣥⢺⣴⢫⣆⠀⡀⠀⠐⠀⣿⣿\n⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠂⠈⢠⠀⠀⠀⠂⡄⢡⠘⢠⠊⡜⣤⠀⠀⠀⠀⠀⡌⠐⢠⠀⢡⠀⠀⠀⢠⣴⣾⣿⠛⣷⣿⢫⠋⠐⠉⠊⣷⣽⣿⣾⣿⡞⣯⠓⠀⠀⠀⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠂⠄⠂⠀⡀⢀⠀⠀⠀⢀⡁⢊⡱⢌⡛⢖⡀⠀⠀⠀⠁⠀⠈⠐⠀⢀⣦⣿⣿⡿⣿⣿⣷⣿⣾⡶⣶⣶⣾⣼⣿⣿⡿⣝⡻⣽⢫⠀⠀⠀⣾⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠈⠀⠁⠘⠀⠊⠐⠁⠂⠌⢡⠐⡡⢊⡱⢄⡂⠀⠀⠈⠀⠀⠀⢠⠾⣽⣟⣾⣿⣿⣿⣻⡿⣉⡟⣿⣻⢟⡿⣿⣿⣿⣽⣷⢯⡷⠀⠀⠀⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠁⠐⡀⢂⠐⢠⠀⠄⡐⢢⠘⡄⢣⠜⢦⡹⢡⠀⠀⠀⠀⡰⣋⠟⢿⣻⣽⣾⢿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⢿⡽⣎⠿⣯⡝⠀⠀⢰⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠐⠠⠈⠄⡈⠄⢁⠂⠡⠈⢆⡍⢢⢁⠣⠌⠀⠀⠀⠱⣉⢎⢶⡳⢮⡽⢯⣷⣼⣯⣟⣯⣿⣽⣳⣿⡻⢏⡶⣈⠱⢶⡉⠁⠀⣼⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⢀⠀⡄⢀⠀⠀⠁⠐⠀⠌⠠⠘⡠⢁⠂⠈⠐⠌⠐⠀⠀⠀⠀⠁⠂⠜⣂⢹⣣⢟⣭⢛⣧⣛⠾⣽⣹⠿⣝⠶⣉⠳⡼⣭⢿⣦⠃⠀⣾⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀⢆⠡⡘⢠⠐⡤⢀⡀⠀⠀⠁⠀⠁⠈⠐⠈⠐⠈⠀⢀⠠⣀⢀⡀⠀⠀⠈⠐⠃⠏⠚⠹⠲⣏⣟⡳⠏⠿⣭⢻⣬⣟⣷⡽⣻⡛⠁⢰⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⠟⠀⠀⠀⠌⢢⠑⡔⢢⢍⡰⡅⡞⣔⠢⡄⠀⠀⡀⡀⢄⠠⡐⢌⠢⡑⢤⠣⡜⡱⢢⢆⡤⢤⠤⣤⡴⠚⠉⠈⢁⣤⣾⣽⣯⣷⣿⣿⣳⢧⠙⢀⣼⣿⣿⣿⣿\n⣿⣿⣿⣿⠿⠛⠀⠀⠀⠀⠌⣀⠣⠘⠁⠘⠒⠉⡼⣘⢧⡙⡖⡰⠄⠱⡈⠔⡈⢆⠱⠉⠆⠓⢬⡱⣋⠞⡼⣩⢟⡶⠽⡳⢶⡿⣿⠿⣿⣿⣿⡿⢿⣿⠳⠃⢠⣿⣿⣿⣿⣿⣿",
+        "height": 608,
+        "width": 704,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        4144,
+        -656
+      ],
+      "typeVersion": 1,
+      "id": "3c5e3ef3-b3e7-4121-bd48-17a638c855e6",
+      "name": "Sticky Note17"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀\n⠀⠀⢀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀\n⠐⠶⣿⣿⡿⠖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣷⠀⠀⠀⠀⠀⠀\n⠀⠀⠈⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣰⣿⣿⣇⡀⠀⠀⠀⠀\n⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⢿⣿⣿⡿⠟⠋⠉⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⠁⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡇⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠇⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢀⣠⣿⣿⣿⣿⣧⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⢠⣤⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⡤⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣿⣿⣿⣿⠟⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣇⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣶⣿⣿⣆⣀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⡿⠉⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠃⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀",
+        "height": 368,
+        "width": 416,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1264,
+        480
+      ],
+      "typeVersion": 1,
+      "id": "5dace6dd-850c-4133-860c-6b83ac577780",
+      "name": "Sticky Note18"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⣴⠚⡄⢫⠉⢩⠃⠀⣰⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⡄⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠠⡞⠳⡜⠦⠚⠘⠒⠋⠀⢰⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠈⠚⠁⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣤⣄⣀⡀⣠⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⢸⠉⠉⢰⠂\n⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⠟⠛⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⡇⠀⡰⠃⠀\n⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⠃⠀⠀⢰⡆⢻⣿⣿⣿⣿⣿⡿⠛⠛⠻⣿⣿⣿⣿⠀⠀⠀⠀⢰⠁⡰⠁⠀⠀\n⠀⠀⠀⠀⣶⣦⣤⠘⣿⣿⣆⠀⠀⢿⠇⣼⣿⣿⣿⣿⠛⢸⡇⠀⠀⠙⣿⣿⣿⣇⠀⠀⠀⠈⠒⠁⠀⠀⠀\n⠀⠀⠀⠀⢀⣀⣁⠀⠻⣿⣿⣷⣦⣤⣶⣿⣿⣿⣿⣇⡀⣾⠃⠀⠀⢠⣿⣿⣿⡇⠀⡔⠒⠲⡄⠀⠀⠀⠀\n⠀⠀⠀⠘⠛⠋⠉⠀⠀⠈⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⣤⣴⣾⣿⣿⠟⠀⠀⠱⠤⣀⠇⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⢀⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠉⠀⠀⣀⡀⠀⠉⠙⠓⠀⠀⠀⠀⠀⠀⠀\n⠀⡗⡤⡲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⣴⣫⢸⢷⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠈⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 368,
+        "width": 448,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1920,
+        112
+      ],
+      "typeVersion": 1,
+      "id": "6a4a886f-16b5-48d7-844d-6a8813ec3c8f",
+      "name": "Sticky Note19"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠋⠀⠀⠙⢿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⣸⡇⠀⠀⠀⠀⠀⠙⢿⣦⡀⠀⠀⢀⣀⣀⣠⣤⣀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠀⠀⠙⠿⠿⠟⠛⠛⠋⠉⠉⠛⣷⡄\n⠀⠀⠀⠀⠀⠀⠀⢠⣿⢀⣀⡤⣤⢤⡤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇\n⠀⠀⠀⠀⣀⣤⣶⠿⠛⠋⠁⠁⠀⠀⠀⠉⠛⣯⣳⡀⠀⠀⠀⠀⠀⠀⢠⡿⠃\n⠀⣠⣶⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡻⣿⠀⠀⠀⠀⠀⣠⡿⠃⠀\n⢸⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⡴⠋⠉⢹⡆⠀⠀⢸⣿⠀⠀⠀⠀⢠⡿⠁⠀⠀\n⢸⣧⡀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠈⠀⠀⢀⣮⠏⠀⠀⠀⠀⠘⣷⡀⠀⠀\n⠀⠙⠿⣶⣤⣀⠀⠀⠀⠀⠈⠻⢦⣤⣤⣤⡶⠟⠁⠀⠀⠀⠀⠀⠀⠘⣷⡄⠀\n⠀⠀⠀⠀⠉⠛⠿⣶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡄\n⠀⠀⠀⠀⠀⠀⠀⠘⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇\n⠀⠀⠀⠀⠀⠀⠀⠀⣿⡆⠀⠀⠀⠀⠀⠀⠀⣠⣶⣶⣦⣤⣤⣄⣀⣀⣤⡿⠃\n⠀⠀⠀⠀⠀⠀⠀⠀⢹⡇⠀⠀⠀⠀⠀⣠⣾⠏⠀⠀⠀⠈⠉⠉⠙⠛⠉⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣄⠀⠀⣠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 320,
+        "width": 336,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        64,
+        560
+      ],
+      "typeVersion": 1,
+      "id": "0c8e675f-9765-49ca-9276-ccd4d883fd68",
+      "name": "Sticky Note20"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢔⣶⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⠗⡿⣾⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⠓⡞⢩⣯⡀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠰⡹⠁⢰⠃⣩⣿⡇⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢷⣿⠿⣉⣩⠛⠲⢶⡠⢄⠐⣣⠃⣰⠗⠋⢀⣯⠁⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣯⣠⠬⠦⢤⣀⠈⠓⢽⣾⢔⣡⡴⠞⠻⠙⢳⡄\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣵⣳⠖⠉⠉⢉⣩⣵⣿⣿⣒⢤⣴⠤⠽⣬⡇\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⢻⣟⠟⠋⢡⡎⢿⢿⠳⡕⢤⡉⡷⡽⠁\n⣧⢮⢭⠛⢲⣦⣀⠀⠀⠀⠠⡀⠀⠀⠀⡾⣥⣏⣖⡟⠸⢺⠀⠀⠈⠙⠋⠁⠀⠀\n⠈⠻⣶⡛⠲⣄⠀⠙⠢⣀⠀⢇⠀⠀⠀⠘⠿⣯⣮⢦⠶⠃⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⢻⣿⣥⡬⠽⠶⠤⣌⣣⣼⡔⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⢠⣿⣧⣤⡴⢤⡴⣶⣿⣟⢯⡙⠒⠤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠘⣗⣞⣢⡟⢋⢜⣿⠛⡿⡄⢻⡮⣄⠈⠳⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠈⠻⠮⠴⠵⢋⣇⡇⣷⢳⡀⢱⡈⢋⠛⣄⣹⣲⡀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣱⡇⣦⢾⣾⠿⠟⠿⠷⠷⣻⠧⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⠽⠞⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 336,
+        "width": 352,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3072,
+        176
+      ],
+      "typeVersion": 1,
+      "id": "20698697-4c48-4bdc-bdd5-a285c3362067",
+      "name": "Sticky Note21"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⢠⡾⠲⠶⣤⣀⣠⣤⣤⣤⡿⠛⠿⡴⠾⠛⢻⡆⠀⠀⠀\n⠀⠀⠀⣼⠁⠀⠀⠀⠉⠁⠀⢀⣿⠐⡿⣿⠿⣶⣤⣤⣷⡀⠀⠀\n⠀⠀⠀⢹⡶⠀⠀⠀⠀⠀⠀⠈⢯⣡⣿⣿⣀⣸⣿⣦⢓⡟⠀⠀\n⠀⠀⢀⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠹⣍⣭⣾⠁⠀⠀\n⠀⣀⣸⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣸⣷⣤⡀\n⠈⠉⠹⣏⡁⠀⢸⣿⠀⠀⠀⢀⡀⠀⠀⠀⣿⠆⠀⢀⣸⣇⣀⠀\n⠀⠐⠋⢻⣅⣄⢀⣀⣀⡀⠀⠯⠽⠂⢀⣀⣀⡀⠀⣤⣿⠀⠉⠀\n⠀⠀⠴⠛⠙⣳⠋⠉⠉⠙⣆⠀⠀⢰⡟⠉⠈⠙⢷⠟⠉⠙⠂⠀\n⠀⠀⠀⠀⠀⢻⣄⣠⣤⣴⠟⠛⠛⠛⢧⣤⣤⣀⡾⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 224,
+        "width": 304,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2752,
+        304
+      ],
+      "typeVersion": 1,
+      "id": "90f3f9bb-5166-4079-85fa-3c7c51f69770",
+      "name": "Sticky Note22"
+    },
+    {
+      "parameters": {
+        "content": "## Professor Kermit here\n### **The webhook data comes from sendpulse which is filtered out here to schedule, reschedule or cancel any event and for steve, it allows him to get summaries or AI Assistance**",
+        "height": 192,
+        "width": 304,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1296,
+        -576
+      ],
+      "typeVersion": 1,
+      "id": "cbbfa5e6-d35b-4e25-aa97-437ece4d7db7",
+      "name": "Sticky Note23"
+    },
+    {
+      "parameters": {
+        "content": "# “Let your plans be dark and impenetrable as night, and when you move, fall like a thunderbolt.” - Sun Tzu",
+        "height": 80,
+        "width": 1712,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -448,
+        -560
+      ],
+      "typeVersion": 1,
+      "id": "b3dcb878-93a1-4e4a-bfc9-666190e11f79",
+      "name": "Sticky Note24"
+    },
+    {
+      "parameters": {
+        "content": "# STEVE'S WHATSAPP BOT WHATSAPP WORKFLOW",
+        "height": 80,
+        "width": 880,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -176,
+        -640
+      ],
+      "typeVersion": 1,
+      "id": "a504a3a7-a939-46e6-89e4-6cd128b800ea",
+      "name": "Sticky Note25"
+    },
+    {
+      "parameters": {
+        "content": "# GET SUMMARY TRANSCRIPT",
+        "height": 80,
+        "width": 528,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        112,
+        112
+      ],
+      "typeVersion": 1,
+      "id": "4470bd2d-043f-4600-8f82-1745d7867c0f",
+      "name": "Sticky Note26"
+    },
+    {
+      "parameters": {
+        "content": "# AI AGENT ASSISTANCE",
+        "height": 80,
+        "width": 528,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        192,
+        352
+      ],
+      "typeVersion": 1,
+      "id": "07471d89-2656-41ee-a089-c4a79e42f4aa",
+      "name": "Sticky Note27"
+    },
+    {
+      "parameters": {
+        "content": "# SENDING PROCESS TO CLIENT ON WHATSAPP",
+        "height": 80,
+        "width": 880,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        864,
+        -32
+      ],
+      "typeVersion": 1,
+      "id": "b52d1b31-7785-4f64-a17d-e6b9a118d78c",
+      "name": "Sticky Note28"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣷⣄⠀⠀⠀⣀⣤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⠏⠀⠀⣿⠀⢀⡾⠛⠋⠀⣾⣿⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⡏⠀⠀⠀⣿⢀⣾⠁⠀⣰⠆⢹⡿⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠃⣧⠀⠀⢠⡟⢸⡇⠀⣰⠟⠀⣼⠃⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣹⣆⢀⣸⣇⣸⠃⢠⡏⠀⣸⠋⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣴⣶⣶⣶⠾⠟⠛⠉⠉⠉⠈⠉⠉⠛⠁⢾⠁⣴⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣤⣶⣶⠾⠟⠛⠛⣻⣿⣙⡁⠀⠀⢾⣶⣾⣷⣿⣶⣄⠀⠀⠀⠀⠰⢿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣠⣴⣶⣶⠾⠟⠛⠉⠉⠉⠀⠀⠀⠀⠀⣿⣻⣟⣻⣿⡦⠀⠘⣿⣿⣛⡿⢶⡇⠀⠀⠀⠀⠀⠀⢻⣆⠀⠀⠀⠀⠀⠀⠀⠀\n⣠⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡟⠙⣿⣿⡗⠀⠀⠿⠉⣿⣿⣿⣶⠀⠀⠀⠀⠀⠀⠈⢿⠀⠀⠀⠀⠀⠀⠀⠀\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠳⣄⣿⡿⠁⠀⠀⠘⢦⣿⣿⠇⠟⠁⠀⠀⠀⠀⠀⠀⣸⡇⠀⠀⠀⠀⠀⠀⠀\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⡇⠀⠀⠀⠀⠀⠀⠀\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣇⠀⠀⠀⠀⠀⠀⠀\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⠀⠀⠀⠀\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⠀⠀⠀⠀⠀⠀\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀\n⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣇⡇⠀⠀⠀⠀⠀⠀⠀\n⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢤⣤⡀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠈⠙⢿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⡾⠟⠛⠆⠀⠀⠀⠀⠀⢀⢻⡇⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠈⠙⠿⣿⣭⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣶⠾⠟⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣾⠇⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠛⠷⠶⢶⣶⣦⣤⣴⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣌⣿⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠃⠀⠀⠀⠀⠀⠀⠀⣤⣴⣾⣿⣿⣿⣓⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣷⣦⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣠⣤⣶⣾⣟⣯⣽⠟⠋⠀⠉⠳⣄⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⢇⠀⠉⠛⠷⣮⣍⣩⡍⢻⡟⠉⣉⢹⡏⠉⣿⣹⣷⣦⣿⠿⠟⠉⠀⠀⠀⠀⠀⠀⠙⣆⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠏⢸⠇⠀⠀⠀⠀⠀⠉⠉⠛⠛⠛⠛⠛⠛⠛⠋⠉⠉⠀⠀⠀⠀⠀⢠⣠⡶⠀⠀⠀⠀⠘⣧⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡿⠀⣸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠟⠁⠀⠀⠀⠀⠀⠘⣆⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠃⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣇⡀⠀⠀⠀⠀⠀⠀⢹⡆⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣾⠀⣾⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣥⢠⣤⠼⠇⠀⠀⠘⣿⡄\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣽⡄⠈⢿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠿⠾⠷⠄⠀⠀⠀⢀⣿⠁\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠸⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣾⠋⠀⠀⠀⠀⠀⠀⢰⣾⡿⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣦⣠⣿⣿⣶⣶⣤⣤⣄⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣠⣴⣿⣇⠀⠀⠀⠀⠀⠀⠀⣸⡟⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣿⠀⠉⠛⢿⣿⣯⣿⡟⢿⠻⣿⢻⣿⢿⣿⣿⣿⣿⣿⠿⠟⠹⣟⢷⣄⠀⠀⠀⢀⣼⠟⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣄⠀⠀⠘⢷⣌⡻⠿⣿⣛⣿⣟⣛⣛⣋⣉⣉⣉⣀⡀⠀⠀⠈⠻⢿⣷⣶⣶⢛⣧⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣏⠀⠀⠀⠀⠹⢯⣟⣛⢿⣿⣽⣅⣀⡀⠀⣀⡀⠀⠀⠀⠠⢦⣀⠰⡦⠀⢸⠀⣏⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⡀⠀⠀⠀⠀⠀⠀⠈⠉⢻⣿⡟⠛⠉⠉⠁⠀⠀⠀⠀⠀⠀⠈⠛⠷⠀⣸⠀⣿⡀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣧⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⣿⡇⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⢿⠀⠀⢦⡀⡀⠀⠀⠀⠀⢹⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡄⡏⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡄⠀⠈⠳⣝⠦⢄⠀⠀⠀⣟⣷⠀⠀⠀⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⡇⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣄⣷⡀⠀⠀⠈⠙⠂⠀⠀⠀⢸⣿⡄⠀⠀⠘⢦⡙⢦⡀⠀⠀⠀⠀⢰⣷⣷⡇⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡿⢧⣤⣀⡀⠀⠀⠀⠀⠀⠀⢿⣷⣄⠀⠀⠀⠁⠋⠀⠀⠀⠀⠀⢸⣿⣿⣇⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣷⡀⠈⠉⠛⠛⠛⠛⠛⠛⠛⠛⢿⡍⠛⠳⠶⣶⣤⣤⣤⣤⣤⣤⠼⠟⡟⢿⡇⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣾⡇⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣴⣿⣷⣶⣶⣶⣶⣶⣶⣦⣀⣀⣀⣻⡀⠀⠀⠀⣀⣀⠀⡀⠀⠀⠀⢀⣼⣿⠇⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠉⠁⠀⠀⠈⠻⣿⡆⢹⣯⣽⣿⣿⠟⠋⠙⣿⣶⣿⣿⣿⣿⣾⣿⣿⣿⣟⠋⠉⣇⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⡀⠀⠀⠀⠈⢻⣆⣿⠀⠀⠀⢁⣶⣿⠿⠟⠛⠷⣶⣽⣿⣿⣻⣏⠙⠃⣴⢻⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣷⣀⠀⠀⠉⠀⠀⠀⠀⠀⢹⣿⠀⣀⣴⣿⠋⠀⠀⠀⠀⠀⠀⠉⠻⣿⣧⣿⢀⣰⣿⣿⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣶⣶⣤⣤⣤⣤⣤⣤⣾⣿⣟⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣅⣾⢿⣵⠇⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠛⠛⠛⠛⠛⠛⠛⠉⠉⠉⠁⢹⣜⠷⠦⠤⠤⠤⠤⠤⠴⠶⠛⣉⣱⠿⠁⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠿⠷⣦⣤⣤⣄⣠⣤⣤⡶⠟⠁⠀⠀⠀⠀⠀⠀⠀",
+        "height": 944,
+        "width": 576,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2544,
+        -640
+      ],
+      "typeVersion": 1,
+      "id": "a431185c-c527-47bd-80ec-53ce22ffa037",
+      "name": "Sticky Note29"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀ \n⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀⠀⠀⠀⠀⠀ \n⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⠋⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠈⢻⣿⣿⡄⠀⠀⠀⠀ \n⠀⠀⠀⠀⠀⠀⠀⣸⣿⡏⠀⠀⠀⣠⣶⣾⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣄⠀⠀⠀ \n⠀⠀⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⢰⣿⣿⣯⠁⠀⠀⠀⠀⠀⠀⠀⠈⠙⢿⣷⡄⠀ \n⠀⠀⣀⣤⣴⣶⣶⣿⡟⠀⠀⠀⢸⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣷⠀ \n⠀⢰⣿⡟⠋⠉⣹⣿⡇⠀⠀⠀⠘⣿⣿⣿⣿⣷⣦⣤⣤⣤⣶⣶⣶⣶⣿⣿⣿⠀ \n⠀⢸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀ \n⠀⣸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠉⠻⠿⣿⣿⣿⣿⡿⠿⠿⠛⢻⣿⡇⠀⠀ \n⠀⣿⣿⠁⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣧⠀⠀ \n⠀⣿⣿⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀ \n⠀⣿⣿⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀ \n⠀⢿⣿⡆⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀ \n⠀⠸⣿⣧⡀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠃⠀⠀ \n⠀⠀⠛⢿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⣰⣿⣿⣷⣶⣶⣶⣶⠶⠀⢠⣿⣿⠀⠀⠀ \n⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⣽⣿⡏⠁⠀⠀⢸⣿⡇⠀⠀⠀ \n⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⢹⣿⡆⠀⠀⠀⣸⣿⠇⠀⠀⠀ \n⠀⠀⠀⠀⠀⠀⠀⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁⠀⠈⠻⣿⣿⣿⣿⡿⠏⠀⠀⠀⠀ \n⠀⠀⠀⠀⠀⠀⠀⠈⠛⠻⠿⠿⠿⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 400,
+        "width": 336,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3104,
+        -208
+      ],
+      "typeVersion": 1,
+      "id": "1b0f3710-6b7e-4ed7-8f27-8c4408aa702b",
+      "name": "Sticky Note31"
+    },
+    {
+      "parameters": {
+        "content": "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢋⣭⣽⣬⣭⡙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢫⣭⣭⣭⣭⣍⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢃⣾⣿⡟⢿⣸⣟⡿⣦⡘⢻⣿⣿⣿⣿⣿⣿⣿⡿⢋⣾⣿⣿⣯⣿⣹⡿⣷⣌⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⣡⣿⣿⣿⡟⣩⣌⡙⣿⣿⣷⣄⢹⣿⣿⣿⣿⣿⡿⢡⣿⣿⣿⢟⣡⣬⡙⢿⣿⣿⣧⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢠⣿⣿⣿⠞⣼⣿⣿⣿⡌⣿⣿⣿⣄⢻⣿⣿⣿⡟⣰⣿⣿⣿⠏⣾⣿⣿⣿⣎⢿⣯⢿⣧⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢡⣾⣿⣻⠿⣸⣿⣿⣿⣿⣧⡘⢿⣿⣿⡈⣿⣿⣿⢣⣿⣿⣿⠟⣼⣿⣿⣿⣿⣿⡌⢿⣿⣿⣆⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣃⣼⣿⣿⣿⠘⡿⣿⣿⣿⣿⣿⡿⢸⣿⣿⣷⣶⣭⣵⣿⣿⣿⣧⡸⣿⣿⣿⣿⣿⣿⣿⠆⣿⣿⣿⣆⡛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠛⠒⠚⠛⠛⠛⠛⠛⠃⠈⠉⠛⠛⠛⠛⠃⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠃⠀⠉⠉⠉⠉⠋⠙⠚⠛⠛⠛⠛⠛⠓⠈⠛⢿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⢀⠂⡁⠂⠄⠠⢁⠂⡁⢂⠐⡀⢂⠐⠠⠈⠄⠡⢈⠐⡀⢂⠐⠠⢈⠐⡈⠄⡐⠠⠐⡀⢂⠐⠠⢈⠐⡀⢂⠐⠀⠄⠂⠀⠀⢻⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⡀⢂⠐⠠⠁⠌⡐⢀⠂⡐⢀⠂⡐⠠⠈⠄⠡⢈⠐⡀⢂⠐⠠⢈⠐⡀⢂⠐⠠⢀⠁⢂⠐⠠⢈⠐⡀⢂⠐⠠⠈⡐⠀⠁⠀⠀⠈⢿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⡐⢀⠂⠌⠠⢁⠂⠄⢂⠐⡀⢂⠐⠠⠁⠌⠠⢁⠂⡐⢀⠂⠌⠐⡀⢂⠐⡀⠌⠐⠠⠈⠄⡈⠐⡀⠂⠐⡀⠌⢀⠁⠄⠂⠀⠀⠀⠀⠘⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⠏⢀⠐⡀⠂⠌⠠⢁⠂⡐⢈⠀⢂⠐⠠⢈⠐⡈⠄⠡⢀⠂⡐⢀⠂⠌⠐⠠⢀⠂⠄⠂⡁⠂⠡⠐⢀⠡⠐⠈⠄⡐⠀⢂⠈⡀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⠏⢀⠂⡐⠠⠁⠌⡐⢀⠂⡐⠠⠈⠄⡈⠐⡀⠂⠄⡈⠐⡀⢂⠐⡀⠂⠌⠠⠁⠄⢂⠈⡐⢀⠁⢂⠁⠂⠄⡈⠐⠠⢀⠁⠂⡐⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿\n⣿⣿⣿⣿⣿⣿⠟⠀⠄⠂⠄⠡⡈⠐⡀⢂⠐⠠⠁⠌⡐⠠⠁⠄⡁⠂⠄⠡⠐⡀⠂⠄⠡⠈⠄⠡⠈⠄⢂⠐⠠⠈⠄⡈⠐⠠⢀⠁⠂⠄⡈⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿\n⣿⣿⣿⣿⣿⠟⠀⠌⠤⠉⡄⠡⡐⠡⢐⡀⠊⠄⣁⠂⠄⠡⢈⠐⠠⠁⠌⠠⠁⠄⠡⠈⠄⠡⠈⠄⠡⠈⠄⡈⠄⡁⠂⠄⡁⠂⠄⡈⠐⠠⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿\n⣿⣿⣿⣿⡟⠀⢎⠘⠄⡃⢄⠃⡄⠣⠄⢂⡉⠰⠀⡌⠌⣁⠢⠌⢂⠡⠘⠠⢁⠊⠄⡑⠈⡄⠑⡈⠄⡁⢂⠐⠠⢀⠁⠂⠄⡁⠂⠄⡁⢂⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿\n⣿⣿⣿⣿⡇⠀⠄⢂⠐⡀⢂⠐⠠⠁⠌⠠⠀⠡⠈⢀⢠⠀⢄⡠⣄⠤⡤⢤⢠⡀⢄⠠⢁⡀⡁⠐⠠⠁⠂⠌⡐⠠⠁⠌⡐⠠⠁⢂⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿\n⣿⣿⣿⣿⡇⠠⠈⠄⢂⠐⠠⠈⠀⠁⣀⢐⢢⠒⡔⣊⠦⡙⢦⡓⢮⣟⢷⢣⢣⠜⡌⠱⣂⠱⣈⠒⡔⠢⠌⡀⠐⠠⠁⢂⠠⢀⠁⠂⠄⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿\n⣿⣿⣿⣿⣇⠀⠡⠈⠄⡈⠀⡀⡔⡡⢎⡜⢢⡙⠴⣁⢎⡱⢣⡙⣞⡼⣏⢮⠱⣈⠔⡡⢂⡕⢢⡙⡔⢣⠜⣠⢀⠀⠄⠂⢀⠂⠈⠄⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿\n⣿⣿⣿⣿⣿⠀⢀⠂⠄⠁⠠⣡⢃⠧⣜⡱⢎⡵⢢⡙⣬⢣⢎⡳⣝⣧⢿⡜⣦⡙⡔⢣⡜⡑⢎⡱⡱⢎⡴⢋⡜⢤⠀⠠⠈⢀⠂⠄⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿\n⣿⣿⣿⣿⣿⠀⠠⢈⠀⠰⡱⢆⢯⡞⣬⢳⣏⡞⣧⣛⣶⣹⢮⣿⣽⣾⣿⣟⣶⣽⣚⡷⣬⠙⣬⢱⡝⣮⡜⢧⢎⢣⡹⢰⡀⡀⠀⠂⢁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿\n⣿⣿⣿⣿⣿⠀⠐⠠⠀⢘⡷⢫⡾⣽⣳⣟⣮⡿⣽⣽⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣟⣧⣟⡶⣿⡾⣵⣛⢮⡚⡤⢓⡱⠜⡤⠀⠈⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿\n⣿⣿⣿⣿⣿⠀⠀⠂⠁⠈⠞⠉⠛⠙⠛⠿⣿⣿⣿⣯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠻⠷⠻⠞⠵⠣⢏⠲⡹⢰⠁⠀⢀⠀⠀⠀⠀⠀⠤⡙⡖⢦⠄⡀⠀⠀⢿⣿\n⣿⣿⣿⡿⠁⡂⠀⠠⠁⠀⠀⠀⠀⠀⠀⠀⠾⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠏⠁⠀⠀⠀⠀⠀⠀⠀⠀⢸⣳⣜⢣⠂⠀⠀⠀⠀⠀⠀⡈⠴⣱⣽⣮⣟⣶⣶⡀⠄⠙\n⣿⣿⠟⢡⣰⡓⠆⠀⠀⠀⠠⠀⠀⠀⠀⠀⣀⡀⡀⢯⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⣝⡀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠿⣝⠎⡆⡁⠀⠀⠀⠀⠀⠀⡸⣹⢷⣻⣽⣿⡽⣟⣿⡳⣄\n⣿⠏⠀⣶⢣⡍⠀⠀⠀⠀⠈⡍⣏⢿⣿⣿⣿⡵⣉⠾⣭⢿⡿⣿⢿⡿⣿⢿⣻⢵⣋⢶⣽⣿⣶⣦⣴⣶⣮⣛⠯⣞⠹⣉⠒⠄⠀⠀⠀⠀⠀⠀⢀⢳⣝⡿⣻⣟⣾⢿⣽⢾⣝⢾\n⡏⠀⠘⡜⣣⠀⠀⠀⡈⠀⠀⠐⡌⢫⣟⡿⣿⣻⣽⢻⡼⢯⡽⢭⠻⣝⠽⣺⢵⣫⣾⣿⣿⣿⣿⣿⣿⣿⠿⣉⠘⠄⠃⠀⠀⠀⠀⠀⠠⠀⠀⠀⠀⠘⠈⠁⠙⠳⣯⠿⣞⢯⡞⣭\n⠆⠀⠀⠘⢁⣴⠀⠀⠄⠁⡀⠀⠈⡑⠮⣝⠳⡝⢮⢧⠙⠢⠑⢊⠱⢈⠣⡙⣾⣿⣿⣿⣿⣿⣿⠿⢏⠣⠁⠀⠀⠀⠀⠀⠀⠄⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢛⡽⢎⡳⢆\n⣇⠀⠀⣠⣿⣿⠀⠀⠌⠀⠄⠀⠀⠀⠁⠈⠑⠈⠊⢂⠃⠄⠁⠀⠀⠂⢀⠘⠭⠟⠿⣻⠻⡹⠌⠃⠈⠀⠀⠀⠀⠄⠀⠈⠀⡀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⢣⠑⠂\n⣿⣾⣿⣿⣿⣿⠀⠀⡐⠈⠀⠌⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠈⠄⠉⠐⠀⠁⠀⠀⠀⠀⠀⠠⠀⠁⡀⠈⠀⠀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣬⣀\n⣿⣿⣿⣿⣿⣿⡂⠀⠀⠄⠁⡀⠂⠀⠁⠂⠐⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⠐⠀⠀⠀⠁⠀⠀⣀⡤⣄⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⡇⠀⠈⡀⠐⠀⡀⠁⠀⠀⠂⠀⠀⠄⠁⠠⠀⠀⠄⠀⡀⠀⡀⠠⠐⠀⠁⠠⠀⠀⠠⠀⠁⠀⣠⢶⣹⣛⡾⢧⡻⡔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⡇⠀⠐⠀⡀⠂⠀⠀⠄⡠⠀⠀⠀⠀⠂⠀⠄⠂⠀⠄⠀⠄⠀⡀⠀⠄⠂⠀⠀⠂⠀⠀⠀⠘⢦⢻⡜⣧⣛⢧⠽⣸⢁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣧⠀⠀⠂⠀⠐⠀⠀⡘⠠⡉⠔⠠⠀⠀⠀⠀⠠⠀⠠⠀⠀⠄⠀⡀⠀⠄⠀⠁⢀⠈⠀⠀⠈⢆⢳⡚⡵⢪⡝⣮⠱⢆⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣷⠀⠀⠠⠁⢀⠀⠀⠄⠡⠐⡈⠔⡁⠀⠀⠀⠀⠀⠀⠐⠀⠀⠄⠀⠠⠀⠂⢀⠀⠀⠀⠀⠀⢈⠦⣙⡜⣣⠞⡴⣋⢎⡱⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣶⣶⣤⣤⣤⡄⠀⠈⠄⠡⠐⠂⡄⠁⠠⠀⠀⠀⠈⠀⠐⠀⠀⠂⠀⠐⠀⠀⡀⠂⠀⠀⠀⠀⠸⡰⡘⣥⢛⡴⣩⠖⣡⠋⠄⠀⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠇⠀⠈⠄⠡⠘⠠⠄⠡⠀⠀⠀⢸⣿⡿⠿⠿⠾⢶⠷⡶⣶⢶⣶⣦⣤⣤⡀⠀⠡⡑⡱⢜⢢⢓⡜⡬⢱⠈⢂⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+        "height": 720,
+        "width": 736,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1808,
+        -624
+      ],
+      "typeVersion": 1,
+      "id": "b730045b-9bd7-4aab-8cd5-e1ad35a5c5e9",
+      "name": "Sticky Note32"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣶⣶⣿⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⣀⣠⣤⣶⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣾⣿⣿⣿⣿⣿⡿⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠋⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠟⠛⠛⠛⠿⠿⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠛⠉⣿⣄⣀⡀⠀⠀⠀⣀⣀⣈⠙⢷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⢀⣠⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠉⠀⢸⣆⠀⠀⠙⢿⣿⣿⡿⠿⣟⣿⣿⣿⠀⠈⢿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⣤⣶⣾⣿⣿⣿⣿⣿⠿⢻⣿⣿⡿⠛⠉⣠⣴⣶⠖⠒⣾⣿⡄⠀⠀⠀⠹⣯⡾⠛⠉⠻⢟⣿⠀⠀⠸⣿⠀⠀⠀⠀⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⢿⣿⣿⠿⠛⠋⠁⠀⠀⣾⣿⠏⠀⢠⣾⠋⣼⠟⠀⢠⢿⡿⣿⡀⠀⠀⠀⢿⣄⣀⣠⣴⣾⣧⣴⣶⣶⣿⣦⣄⠀⠀⣻⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠁⠀⠀⠀⠀⠀⠀⢠⣿⡟⠀⣰⣿⣇⣼⡏⠀⢰⣯⠏⠀⣿⡇⠀⠀⣀⣤⣾⣿⣯⣭⣿⣿⣿⠟⠛⢻⡿⢿⣿⡿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡇⢸⡟⠿⣿⡟⠀⣰⣿⠋⢀⣼⣿⠁⢀⣾⣿⣿⠿⢿⣿⡿⠿⠿⢣⣤⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡇⠘⣷⠀⠈⠛⠶⣿⣯⣴⣿⠿⠃⢀⣾⣿⡟⠁⣴⡇⣠⣶⣶⡦⠘⣿⡀⣸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⢹⡀⠀⠀⠀⠀⠉⠉⢠⣿⣦⣼⣿⠋⠀⠀⣿⣧⠹⠿⠟⠁⠀⠈⢀⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠉⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⣧⣸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⢿⣿⣿⢷\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⡟⠁⠀⠀⠉⠉\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⢿⣿⣷⣤⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣶⣾⡿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⡟⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⢿⣿⣿⠿⣿⣿⠖⠚⢿⡟⢻⣿⣿⠿⣿⣼⡇⣸⣿⣿⣶⣤⣄⡀⠀⠀⠀⣠⣾⡏⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⢿⣆⠀⠈⣧⣀⠀⢻⣾⣿⣿⠀⣽⡿⣷⠙⢿⣿⡆⠉⠙⢿⣿⣶⣾⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣧⡀⠙⢻⡷⢸⡏⠈⣿⣿⣿⣧⠘⣷⣄⡿⣿⡄⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣧⠀⠘⣧⡸⣇⠀⣿⣿⠉⠻⣇⠈⣿⠁⠘⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⠁⢹⣿⡀⠀⠈⠻⣿⡀⣿⣿⡀⠀⢹⡄⢸⠀⠀⠘⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⢸⣿⠇⠀⠀⠀⠙⢷⣿⣿⣧⡀⣸⣿⣿⠀⠀⠀⢻⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⠀⣠⣼⣿⣶⣶⣶⣦⣤⡶⢹⣟⡛⢿⡏⢀⣿⠀⠀⠀⢸⣿⣀⠀⠀⠀⣀⣀⣀⣀⣀⣀⡀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠛⠛⠛⠛⠛⠛⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠈⠉⠉⠉⠉⠉⠉⠉⠀⠀⠀⠀⠀",
+        "height": 592,
+        "width": 608,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3408,
+        288
+      ],
+      "typeVersion": 1,
+      "id": "90e2bc4c-955a-4338-99a2-f0bf9817fd9b",
+      "name": "Sticky Note33"
+    },
+    {
+      "parameters": {
+        "content": "# ME AFTER THIS PROJECT\n⣠⡶⠶⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠛⠉⠛⢷⡀⠀⠀\n⡟⠀⠀⣸⡷⢶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡀⢀⡤⠤⣿⡀⠀\n⣷⠀⣼⠋⠀⠀⢹⡀⠀⠀⠀⢠⣶⠟⠛⢷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣾⠀⠀⠈⢻⡄\n⠘⢧⡇⠀⢀⣤⠾⠛⠻⢶⣤⡟⠁⠀⠀⢰⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⠀⠀⠘⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡴⠶⣦⡀⠀⠀⣸⡏⣇⠀⠀⠀⣷\n⠀⢸⡇⢀⠏⠀⠀⠀⠀⠀⡿⠁⠀⢀⣴⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣿⡷⠿⠝⠛⠻⠿⣿⣶⣶⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣏⠀⠀⠀⢻⡀⠀⣾⡤⠛⠒⠲⣤⡇\n⠀⠀⣷⢸⠀⠀⠀⡤⠖⠚⠁⠀⠀⣾⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⡿⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠛⢝⠷⣄⠀⠀⠀⠀⠀⠀⠀⠙⣦⠀⠀⢸⡇⣼⠃⣇⠀⠀⠀⠈⢱\n⠀⠀⠘⣿⠀⠀⢸⠀⠀⠀⠀⠀⢰⡇⠀⠀⠀⠀⠀⠀⠀⠀⣠⠞⠙⢋⡤⠖⠒⡖⠒⠀⠀⠀⠀⠙⣏⠓⠲⢤⡀⠀⠁⠈⠳⣄⠀⠀⠀⠀⠀⠀⢸⡇⠀⠘⠿⠁⠀⠈⢳⡆⠀⠀⢠\n⠀⠀⠀⢸⡄⠀⠈⠀⣀⣀⠀⠀⠸⡇⠀⠀⠀⠀⠀⠀⢀⡾⠁⣀⡾⠋⠀⣠⠜⠁⠀⠀⢀⣀⡀⠀⠈⠓⠆⠀⢙⡧⠀⠀⠀⠈⢧⡀⠀⠀⠀⠀⢸⠃⠀⣀⣄⠀⠀⢠⡏⠁⠀⠀⡴\n⠀⠀⠀⠀⢷⡀⠀⠀⠀⠈⢳⣄⢀⡇⠀⠀⠀⠀⠀⢠⡟⠀⠀⠉⠁⠀⠀⢀⣤⣶⣾⣿⣿⣿⣿⣿⣷⣶⣄⠀⠀⠀⠀⠀⠀⠀⠀⢻⡄⠀⠀⠀⢸⡀⢰⠋⠀⠀⠀⠈⠀⠀⢀⡾⠁\n⠀⠀⠀⠀⠈⢷⡀⠀⠀⠀⠀⣿⡞⠁⠀⠀⠀⠀⢠⡟⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⢻⡄⠀⠀⠈⠳⣽⡄⠀⠀⠀⠀⣀⡴⠟⠁⠀\n⠀⠀⠀⠀⠀⠀⠙⠶⢤⣤⡴⠟⠀⠀⠀⠀⠀⠀⣾⠁⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⣧⠀⠀⠀⠀⠈⠿⠦⢤⠶⠟⠉⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡇⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⢹⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⠿⠛⠉⠉⠙⠻⢿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⣼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣷⠀⠀⢰⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣆⠀⣼⣿⣿⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣇⠀⠀⣰⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⢿⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⠀⣶⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡆⠈⠛⠛⣁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⠿⠃⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣤⣴⣞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⢤⣀⠀⢀⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠈⠳⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⠞⠛⠻⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⡶⣦⣤⣀⣀⣀⣀⣀⣀⣤⣴⣶⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 480,
+        "width": 672,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3968,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "27c9faaf-7d54-4469-9671-a993b4aff90a",
+      "name": "Sticky Note30"
+    },
+    {
+      "parameters": {
+        "content": "# THANK YOU ARTEM AND MARIA FOR THIS OPPERTUNITY - AHJ",
+        "height": 112,
+        "width": 720,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        4640,
+        384
+      ],
+      "typeVersion": 1,
+      "id": "6a8545f3-de61-4b65-b618-735e433a4e2d",
+      "name": "Sticky Note34"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⢸⣦⡀⠀⠀⠀⠀⢀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⢸⣏⠻⣶⣤⡶⢾⡿⠁⠀⢠⣄⡀⢀⣴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀\n⠀⠀⣀⣼⠷⠀⠀⠁⢀⣿⠃⠀⠀⢀⣿⣿⣿⣇⠀⠀⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠴⣾⣯⣅⣀⠀⠀⠀⠈⢻⣦⡀⠒⠻⠿⣿⡿⠿⠓⠂⠀⠀⢂⡇⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠉⢻⡇⣤⣾⣿⣷⣿⣿⣤⠀⠀⣿⠁⠀⠀⠀⢀⣴⣿⣿⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠸⣿⡿⠏⠀⢀⠀⠀⠿⣶⣤⣤⣤⣄⣀⣴⣿⡿⢻⣿⡆⠂⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠟⠁⠀⢀⣼⠀⠀⠀⠹⣿⣟⠿⠿⠿⡿⠋⠀⠘⣿⣇⠀⠄⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⢳⣶⣶⣿⣿⣇⣀⠀⠀⠙⣿⣆⠀⠀⠀⠀⠀⠀⠛⠿⣿⣦⣤⣀⠀⠀\n⠀⠀⠀⠀⠀⠀⣹⣿⣿⣿⣿⠿⠋⠁⠀⣹⣿⠳⠀⠀⠀⠀⠀⠀⢀⣠⣽⣿⡿⠟⠃\n⠀⠀⠀⠈⠀⢰⠿⠛⠻⢿⡇⠀⠀⠀⣰⣿⠏⠀⠀⢀⠀⠀⠁⣾⣿⠟⠋⠁⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠀⠀⣰⣿⣿⣾⣿⠿⢿⣷⣀⢀⣿⡇⠁⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠀⠋⠉⠁⠀⠀⠀⠀⠙⢿⣿⣿⠇⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀",
+        "height": 288,
+        "width": 336,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        368,
+        592
+      ],
+      "typeVersion": 1,
+      "id": "6b6d5d20-affb-4163-b0f3-eb05c85cd470",
+      "name": "Sticky Note35"
+    },
+    {
+      "parameters": {
+        "content": "⠀⠀⠀⢠⡾⠲⠶⣤⣀⣠⣤⣤⣤⡿⠛⠿⡴⠾⠛⢻⡆⠀⠀⠀\n⠀⠀⠀⣼⠁⠀⠀⠀⠉⠁⠀⢀⣿⠐⡿⣿⠿⣶⣤⣤⣷⡀⠀⠀\n⠀⠀⠀⢹⡶⠀⠀⠀⠀⠀⠀⠈⢯⣡⣿⣿⣀⣸⣿⣦⢓⡟⠀⠀\n⠀⠀⢀⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠹⣍⣭⣾⠁⠀⠀\n⠀⣀⣸⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣸⣷⣤⡀\n⠈⠉⠹⣏⡁⠀⢸⣿⠀⠀⠀⢀⡀⠀⠀⠀⣿⠆⠀⢀⣸⣇⣀⠀\n⠀⠐⠋⢻⣅⣄⢀⣀⣀⡀⠀⠯⠽⠂⢀⣀⣀⡀⠀⣤⣿⠀⠉⠀\n⠀⠀⠴⠛⠙⣳⠋⠉⠉⠙⣆⠀⠀⢰⡟⠉⠈⠙⢷⠟⠉⠙⠂⠀\n⠀⠀⠀⠀⠀⢻⣄⣠⣤⣴⠟⠛⠛⠛⢧⣤⣤⣀⡾⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+        "height": 224,
+        "width": 288,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        992,
+        656
+      ],
+      "typeVersion": 1,
+      "id": "728781c7-590e-445f-9f05-4eeabc669dfa",
+      "name": "Sticky Note36"
+    },
+    {
+      "parameters": {
+        "sendTo": "hadisnow45@gmail.com",
+        "subject": "⚠️ ERROR IN WHATSAPP WORKFLOW ⚠️",
+        "emailType": "text",
+        "message": "=An error occurred during the execution of your workflow. Please find the details below:\n🔁 Retry Of: {{ $json.execution.retryOf }} \n🧠 Workflow Name: {{ $json.workflow.name }}\nWorkflow ID: {{ $json.workflow.id }}\n🔗 Execution URL:{{ $json.execution.url }} \n🧩 Last Node Executed:{{ $json.execution.lastNodeExecuted }} \nMode: {{ $json.execution.mode }}\n❗Error Message:{{ $json.execution.error.message }} \nStack Trace: {{ $json.execution.error.stack }}\n\nPlease review the execution log for more details and take appropriate action.Regards,n8n Automation System",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -1024,
+        -192
+      ],
+      "id": "bd358e49-9cb6-422c-bfcd-f751755b0236",
+      "name": "Send Developer",
+      "webhookId": "434c672f-d2b2-4656-b03c-882319778d94",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "8tR4BZ9GJzCyDJrH",
+          "name": "Gmail Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.fireflies.ai/graphql",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer "
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{ \"query\": \"{users {user_id} }\"}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        144,
+        224
+      ],
+      "id": "1c98424c-cd70-4ae9-93d1-c92a7860f43c",
+      "name": "GET_USERID1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.fireflies.ai/graphql",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer "
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": \"query Transcripts($userId: String) { transcripts(user_id: $userId) { title id date } }\",\n  \"variables\": {\n    \"userId\": \"{{ $('GET_USERID1').item.json.data.users.first().user_id }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        352,
+        224
+      ],
+      "id": "3a8d6a1a-548c-4c45-8a09-e670bfce332a",
+      "name": "GET_TRANSCRIPTS1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.fireflies.ai/graphql",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer "
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": \"query Transcript($transcriptId: String!) { transcript(id: $transcriptId) { title id date meeting_attendees { email } sentences { speaker_name text } } }\",\n  \"variables\": {\n    \"transcriptId\": \"{{ $json.id }}\"\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        688,
+        224
+      ],
+      "id": "5f54dcf8-a596-462b-8c65-bebed9c0153a",
+      "name": "Get Transcripts1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1184,
+        352
+      ],
+      "id": "d3e39f97-eb95-4db8-bfdd-8b0b5fbf71e3",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Please generate a summary of this meeting in the following format:\n\n- 3-4 sentence summary of the meeting and what was discussed\n- Action Items: A list of action item from the meeting\nSPEAKER_NAME_1: Text  \nSPEAKER_NAME_2: Text  \n\nHere is the transcript:\n<transcript>\n{{ $json.data.transcript.sentences.map(x => x.speaker_name + \": \" + x.text).join('\\n') }}\n</transcript>",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        912,
+        224
+      ],
+      "id": "8a44f614-035c-46dc-9204-cfe534421156",
+      "name": "Summarize Meeting1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "457a0cc2-2bbf-47eb-b00c-b25664717004",
+              "name": "FIREFLIES_API_KEY",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -32,
+        224
+      ],
+      "id": "b179c033-f776-42f6-a4e5-59302f447370",
+      "name": "GET_API_KEY1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const transcripts = $input.first().json.data.transcripts;\ntranscripts.sort((a, b) => b.date - a.date); // Newest first\n\nreturn [{\n  json: transcripts[0] // Only send latest one\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        512,
+        224
+      ],
+      "id": "daa9af46-e6ab-4c1a-a04d-9d9941ddf590",
+      "name": "Code1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1232,
+        -192
+      ],
+      "id": "75dacfc7-fd55-4081-b59f-bcee7a2e904f",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "content": "## THIS 🎼 TOOK 🎼 ME 🎼 FOREVERRRRRRRRRR 🎼",
+        "height": 80,
+        "width": 608,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1664,
+        464
+      ],
+      "typeVersion": 1,
+      "id": "0e6a7255-c3d5-494a-9faf-1ad3ca5c0d0a",
+      "name": "Sticky Note37"
+    }
+  ],
+  "pinData": {
+    "whatsapp_handler": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.businessstartupqatar.com",
+            "x-real-ip": "46.4.94.81",
+            "x-forwarded-for": "46.4.94.81",
+            "x-forwarded-host": "n8n.businessstartupqatar.com",
+            "x-forwarded-proto": "https",
+            "x-forwarded-ssl": "on",
+            "x-forwarded-port": "443",
+            "x-original-uri": "/webhook-test/STEVE",
+            "content-length": "448",
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "user-agent": "GuzzleHttp/7",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "contact_id": "686669d663297b4da3055cd6",
+            "full_name": "AHJ",
+            "client_name": "Abdul Hadi Haseeb Jilani Sheikh Ahmed",
+            "client_email": "snowhadi@gmail.com",
+            "phone": "+97455608066",
+            "message": "Can you give me my summary request for today?... Thank you! 😪",
+            "intent": "1",
+            "schedule_meeting": "Can you give me my summary request for today?... Thank you! 😪",
+            "reschedule_meeting": "",
+            "get_schedule": ""
+          },
+          "webhookUrl": "https://n8n.businessstartupqatar.com/webhook-test/STEVE",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "whatsapp_handler": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "booking": {
+      "main": [
+        [
+          {
+            "node": "AI AGENT BOOKING",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cancel": {
+      "main": [
+        [
+          {
+            "node": "AI AGENT BOOKING",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reschedule": {
+      "main": [
+        [
+          {
+            "node": "AI AGENT BOOKING",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "summary request": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "something else": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "GET_API_KEY1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Replying Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request12": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get_PersonByEmail": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "COUNTRYCODE",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "COUNTRYCODE1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "Get_PersonByEmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request14": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields10": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "something else",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "summary request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "reschedule",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "cancel",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "booking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an event in Google Calendar8": {
+      "ai_tool": [
+        [
+          {
+            "node": "Replying Agent2",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update calendar1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI AGENT BOOKING",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create event1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI AGENT BOOKING",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete event1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI AGENT BOOKING",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetAll events1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI AGENT BOOKING",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI AGENT BOOKING": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "COUNTRYCODE": {
+      "main": [
+        [
+          {
+            "node": "PHONECODE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PHONECODE": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "COUNTRYCODE1": {
+      "main": [
+        [
+          {
+            "node": "PHONECODE1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PHONECODE1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields13": {
+      "main": [
+        [
+          {
+            "node": "CreatePerson_Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields12": {
+      "main": [
+        [
+          {
+            "node": "CreatePerson_Email1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreatePerson_Email1": {
+      "main": [
+        []
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request13": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request15": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replying Agent2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET_USERID1": {
+      "main": [
+        [
+          {
+            "node": "GET_TRANSCRIPTS1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET_TRANSCRIPTS1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Transcripts1": {
+      "main": [
+        [
+          {
+            "node": "Summarize Meeting1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarize Meeting1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET_API_KEY1": {
+      "main": [
+        [
+          {
+            "node": "GET_USERID1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Get Transcripts1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize Meeting1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send Developer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "75376eaf-a43c-48c7-8a7c-8999e2575e8b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "29b0940c858f01075acc60cfebb83424e9330f9cae0db980f5aa9a36401e8edf"
+  },
+  "id": "B9j3xUhHAP5DWgoR",
+  "tags": []
+}

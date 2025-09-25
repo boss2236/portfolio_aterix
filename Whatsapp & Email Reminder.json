@@ -1,0 +1,933 @@
+{
+  "name": "Whatsapp & Email Reminder",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "id": "6c36a043-4fff-4f7b-b6e4-cd78b521f25b",
+      "name": "Reminder Schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -96,
+        48
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "options": {}
+      },
+      "id": "bbf0e2ae-6907-4957-a645-8da44d9ed4a8",
+      "name": "Get Upcoming Events",
+      "type": "n8n-nodes-base.googleCalendar",
+      "position": [
+        80,
+        48
+      ],
+      "typeVersion": 1.3,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Reminder Agent",
+        "height": 744,
+        "width": 2000,
+        "color": 4
+      },
+      "id": "833abc84-73ff-41da-90f0-a77b4e424ac1",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -144,
+        -80
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        -752
+      ],
+      "id": "a35f31bb-9ef6-4645-9e8e-f80a1f921fac",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "ibmSy3pg@W46VfK"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        336,
+        -736
+      ],
+      "id": "8ad32f79-0e21-440d-a413-2b7aecaabdee",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "grant_type",
+              "value": "client_credentials"
+            },
+            {
+              "name": "client_id",
+              "value": "c9219055fcfec26f98c5a42531a5458c"
+            },
+            {
+              "name": "client_secret",
+              "value": "4670e25c680631930632ce6095818749"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1168,
+        48
+      ],
+      "id": "8b83fc27-81ea-461e-aa17-b53919969031",
+      "name": "HTTP Request16"
+    },
+    {
+      "parameters": {
+        "url": "https://api.sendpulse.com/whatsapp/contacts/getByPhone",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.number }}"
+            },
+            {
+              "name": "bot_id",
+              "value": "={{ $json.bot_id }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('HTTP Request16').item.json.access_token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1568,
+        48
+      ],
+      "id": "4b291fcc-77fd-42b9-84af-03db1c4db3dc",
+      "name": "HTTP Request17"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "caae258e-8adf-479a-91e1-66ede7a34db3",
+              "name": "number",
+              "value": "={{ $('GET_NUMBER').item.json.message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "b3e26b4a-37f5-402d-ab6f-df7198f7cb81",
+              "name": "bot_id",
+              "value": "68665dc6bec3d429ec0eac05",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1376,
+        48
+      ],
+      "id": "34808edc-9cca-4c60-8002-1ce269b947ce",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/whatsapp/contacts/send",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('HTTP Request16').item.json.access_token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contact_id\": \"{{ $json.data.id }}\",\n  \"message\": {\n    \"type\": \"template\",\n    \"template\": {\n      \"name\": \"reminder_meeting\",\n      \"language\": {\n        \"code\": \"en\"\n      },\n      \"components\": [\n        {\n          \"type\": \"body\",\n          \"parameters\": [\n            {\n              \"type\": \"text\",\n              \"text\": \"{{ $('Reminder Message Agent').item.json.message.content.replaceAll('\\\"', '\\\\\\\"').replaceAll('\\n', ' ') }}\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1728,
+        48
+      ],
+      "id": "37972149-a3d8-40a5-a549-78602c78bf56",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('GET_EMAIL').item.json.message.content }}",
+        "subject": "={{ $('Get Upcoming Events1').item.json.summary }}",
+        "message": "={{ $json.message.content }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1168,
+        288
+      ],
+      "id": "804d6851-b99c-4c4d-a2a4-6af2ab431807",
+      "name": "Send a message",
+      "webhookId": "0ef85ce4-c70f-4fb0-a109-173da4cc6a15",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "8tR4BZ9GJzCyDJrH",
+          "name": "Gmail Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "options": {}
+      },
+      "id": "ac449868-6cea-49c1-9e86-3a31c8e71b78",
+      "name": "Get Upcoming Events1",
+      "type": "n8n-nodes-base.googleCalendar",
+      "position": [
+        64,
+        272
+      ],
+      "typeVersion": 1.3,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const event = $json;\nconst store = $getWorkflowStaticData('global');\n\n// Construct a unique key per event\nconst reminderKey = `reminded:${event.id}`;\n\n// If we've already reminded for this event, skip it\nif (store[reminderKey]) {\n\treturn {\n\t\tskip: true,\n\t\tskippedReason: 'Already reminded',\n\t};\n}\n\n// Otherwise, mark it for reminder and output the event data\nstore[reminderKey] = true;\n\nreturn {\n\tjson: {\n\t\t...event,\n\t\treminderKey,\n\t},\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        288,
+        48
+      ],
+      "id": "5544e445-18df-4564-a1ce-f069b0da93bc",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Event Details:\nTitle: {{ $('Get Upcoming Events').item.json.summary }}\nStart: {{ $('Get Upcoming Events').item.json.start.dateTime }}\nEnd: {{ $('Get Upcoming Events').item.json.end.dateTime }}\nDescription: {{ $('Get Upcoming Events').item.json.description }}",
+        "options": {
+          "systemMessage": "=You are a friendly, personal calendar reminder assistant designed to create warm, engaging reminder messages that help users stay organized and prepared for their upcoming events.\n\nuse the {{ $('Get Upcoming Events').item.json.description }} to make it as structured as possible. remind him the time of the meeting"
+        }
+      },
+      "id": "548300c5-0e65-417a-a881-5f39491101d6",
+      "name": "OLD Reminder Message Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        208,
+        -944
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Event Details:\nTitle: {{ $('Get Upcoming Events').item.json.summary }}\nStart: {{ $('Get Upcoming Events').item.json.start.dateTime }}\nEnd: {{ $('Get Upcoming Events').item.json.end.dateTime }}\nDescription: {{ $('Get Upcoming Events').item.json.description }}"
+            },
+            {
+              "content": "=You are a friendly, personal calendar reminder assistant designed to create warm, engaging reminder messages that help users stay organized and prepared for their upcoming events.\n\nuse the {{ $('Get Upcoming Events').item.json.description }} to make it as structured as possible. remind him the time of the meeting",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        816,
+        48
+      ],
+      "id": "2e70706d-060f-4b61-a101-a337a2bf8fee",
+      "name": "Reminder Message Agent",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const event = $json;\nconst store = $getWorkflowStaticData('global');\n\n// Construct a unique key per event\nconst reminderKey = `reminded:${event.id}`;\n\n// If we've already reminded for this event, skip it\nif (store[reminderKey]) {\n\treturn {\n\t\tskip: true,\n\t\tskippedReason: 'Already reminded',\n\t};\n}\n\n// Otherwise, mark it for reminder and output the event data\nstore[reminderKey] = true;\n\nreturn {\n\tjson: {\n\t\t...event,\n\t\treminderKey,\n\t},\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        288,
+        288
+      ],
+      "id": "7c436c40-6c15-4a4e-b1e8-c374e461371f",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Event Details:\nTitle: {{ $('Get Upcoming Events1').item.json.summary }}\nStart: {{ $('Get Upcoming Events1').item.json.start.dateTime }}\nEnd: {{ $('Get Upcoming Events1').item.json.end.dateTime }}\nDescription: {{ $('Get Upcoming Events1').item.json.description }}"
+            },
+            {
+              "content": "=You are a friendly, personal calendar reminder assistant designed to create warm, engaging reminder messages for clients that help users stay organized and prepared for their upcoming events.\n\nuse the {{ $('Get Upcoming Events1').item.json.description }} to make it as structured as possible to remind your clients the time of the meeting and if they want to reschedule or cancel, inform them to email back to us on the following email or TEXT on the companies whatsapp number:\n\nCOMPANY EMAIL: work@businessstartupqatar.com\nCOMPANY PHONE: +974 5992 3737",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        800,
+        288
+      ],
+      "id": "3411b4fe-6684-493e-a09c-c9eb1ba1044e",
+      "name": "Reminder Message Agent1",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Identify the name from the description And Give the output as phone number ONLY"
+            },
+            {
+              "content": "=here is the Description: {{ $json.description }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        480,
+        48
+      ],
+      "id": "1d680ee2-5b49-4c3b-bc63-f5575ae5ac17",
+      "name": "GET_NUMBER",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Identify the name from the description And Give the output as email ONLY"
+            },
+            {
+              "content": "=here is the Description: {{ $json.description }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        464,
+        288
+      ],
+      "id": "dfeedb25-7d26-477b-8ef6-a5e5b7437360",
+      "name": "GET_EMAIL",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        192,
+        512
+      ],
+      "id": "0efb28de-5b1d-4d18-b400-d05ba7101936",
+      "name": "Steve Trigger"
+    },
+    {
+      "parameters": {
+        "functionCode": "const events = items.map(item => item.json);\nconst today = new Date().toLocaleDateString('en-GB', { timeZone: 'Asia/Qatar' });\n\nconst agendaLines = events.map(e => {\n  const time = new Date(e.start.dateTime).toLocaleTimeString('en-GB', {\n    timeZone: 'Asia/Qatar',\n    hour: '2-digit',\n    minute: '2-digit',\n  });\n  return `- ${time} – ${e.summary}`;\n});\n\nconst body = `🗓️ *Today's Agenda (${today}):*\\n${agendaLines.join('\\n')}\\n\\nNeed to follow up or reschedule anything?`;\n\nreturn [{ json: { message: body }}];\n"
+      },
+      "id": "dfac213c-0b07-477d-8391-5d377329bd72",
+      "name": "Format Agenda",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        768,
+        512
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "timeMin": "={{ $now.startOf('day') }}",
+        "timeMax": "={{ $now.endOf('day') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        464,
+        512
+      ],
+      "id": "8d22c015-938b-4940-b55f-260dc81a7504",
+      "name": "Get many events",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "grant_type",
+              "value": "client_credentials"
+            },
+            {
+              "name": "client_id",
+              "value": "c9219055fcfec26f98c5a42531a5458c"
+            },
+            {
+              "name": "client_secret",
+              "value": "4670e25c680631930632ce6095818749"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1008,
+        512
+      ],
+      "id": "5c3379cc-e88b-454c-911b-fc64ca8afb8a",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "url": "https://api.sendpulse.com/whatsapp/contacts/getByPhone",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.number }}"
+            },
+            {
+              "name": "bot_id",
+              "value": "={{ $json.bot_id }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('HTTP Request').item.json.access_token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1408,
+        512
+      ],
+      "id": "c27f6460-2068-4542-80c8-b7e65e76a7c3",
+      "name": "HTTP Request18"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "caae258e-8adf-479a-91e1-66ede7a34db3",
+              "name": "number",
+              "value": "=+97450343737",
+              "type": "string"
+            },
+            {
+              "id": "b3e26b4a-37f5-402d-ab6f-df7198f7cb81",
+              "name": "bot_id",
+              "value": "68665dc6bec3d429ec0eac05",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1216,
+        512
+      ],
+      "id": "05451b85-6fb4-4c77-aa39-09179d12bcba",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/whatsapp/contacts/sendTemplate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('HTTP Request').item.json.access_token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contact_id\": \"{{ $json.data.id }}\",\n  \"template\": {\n    \"name\": \"reminder_meeting\",\n    \"language\": {\n      \"code\": \"en\"\n    },\n    \"components\": [\n    {\n      \"type\": \"body\",\n      \"parameters\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"{{ $('Format Agenda').item.json.message.replaceAll('\\\"', '\\\\\\\"').replaceAll('\\n', ' ') }}\"\n        }\n      ]\n    }\n    ]\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1568,
+        512
+      ],
+      "id": "548cc09c-be44-4b0c-ba6c-7d727a1791ce",
+      "name": "HTTP Request2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Reminder Schedule": {
+      "main": [
+        [
+          {
+            "node": "Get Upcoming Events",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Upcoming Events1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Upcoming Events": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "OLD Reminder Message Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "OLD Reminder Message Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request16": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request17": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Upcoming Events1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "GET_NUMBER",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OLD Reminder Message Agent": {
+      "main": [
+        []
+      ]
+    },
+    "Reminder Message Agent": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "GET_EMAIL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reminder Message Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET_NUMBER": {
+      "main": [
+        [
+          {
+            "node": "Reminder Message Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET_EMAIL": {
+      "main": [
+        [
+          {
+            "node": "Reminder Message Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Steve Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get many events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Agenda": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events": {
+      "main": [
+        [
+          {
+            "node": "Format Agenda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request18": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "fb002143-d8e5-4c0b-8e37-e61480c75735",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "29b0940c858f01075acc60cfebb83424e9330f9cae0db980f5aa9a36401e8edf"
+  },
+  "id": "MMERMseA7q8I9M5b",
+  "tags": []
+}

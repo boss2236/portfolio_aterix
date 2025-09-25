@@ -1,0 +1,987 @@
+{
+  "name": "Email System",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a3ea688a-de9f-4bad-b0e4-3f661dbe4507",
+              "name": "message",
+              "value": "={{ $json.textPlain }}",
+              "type": "string"
+            },
+            {
+              "id": "3cacc472-f8b8-4dd2-81a1-34b72bfb989b",
+              "name": "email",
+              "value": "={{ $json.from }}",
+              "type": "string"
+            },
+            {
+              "id": "cf610ca8-9951-4226-a94c-546826107ef3",
+              "name": "subject",
+              "value": "={{ $json.subject }}",
+              "type": "string"
+            },
+            {
+              "id": "60c8a0c7-85e1-49db-bcbf-595184be718a",
+              "name": "name",
+              "value": "={{ $json.from.match(/^([^<]+)/)[0].trim() }}\n",
+              "type": "string"
+            },
+            {
+              "id": "f72fdb1e-c585-4633-84be-5dda1bcb9419",
+              "name": "only email",
+              "value": "={{ $json.from.match(/<(.+?)>/)[1] }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -8592,
+        -2576
+      ],
+      "id": "506e9717-8281-4bc4-8111-46877dcbc949",
+      "name": "Email"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Analyse the content of the email to determine if it pertains to a scheduled customer support activity. To return \"content\": true, both of the following must apply:\n\n1. The email clearly references booking, cancel, reschedule, or similar intent.\n2. The email includes an exact date and time reference related to that intent.\n\nAlternatively, if the email explicitly cancels a previously scheduled meeting (e.g., “I want to cancel our appointment”), \"content\" should also be true.\n\nIf none of these conditions are met, set \"content\" to false.\n"
+            },
+            {
+              "content": "=\n\nhere is the incoming email:  {{ $json.message }}\n",
+              "role": "assistant"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -8368,
+        -2576
+      ],
+      "id": "1527cd3a-f9c6-45dc-9252-0fb8326ec573",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.content.content }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "id": "2b6f1a32-9614-4589-bc64-e53991ce684b"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "true"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "075e3125-c0f8-4a33-b888-33b2888b5db4",
+                    "leftValue": "={{ $json.message.content.content }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "false",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "false"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -7968,
+        -2576
+      ],
+      "id": "b6d8b9e2-3182-4329-969c-46b5ea64d033",
+      "name": "if"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "eventId": "={{ $fromAI(\"Event_ID\",\"it is the id of the specific event\") }}",
+        "updateFields": {
+          "end": "={{ $fromAI(\"end\",\"it is the meeting date ending time\") }}",
+          "start": "={{ $fromAI(\"Start\",\"it is the meeting date starting time\") }}",
+          "summary": "={{ $fromAI(\"eventName\",\"the name of the calendar event\") }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -7744,
+        -2640
+      ],
+      "id": "a0a73fd7-60a1-4f8f-988c-5466c7e3d4b7",
+      "name": "Update calendar1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to create a new calendar event.",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "start": "={{ $fromAI(\"Start\",\"it is the meeting date starting time\") }}",
+        "end": "={{ $fromAI(\"end\",\"it is the meeting date ending time\") }}",
+        "additionalFields": {
+          "description": "={{ $fromAI('Description', ``, 'string') }}\n\n{{ $('Email').item.json.name }}",
+          "summary": "={{ $fromAI(\"eventName\",\"the name of the calendar event\") }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -7616,
+        -2640
+      ],
+      "id": "081fa0ff-43fa-49c2-b9cd-158b0e2d7fbb",
+      "name": "Create event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "eventId": "={{ $fromAI(\"Event_ID\",\"it is the id of the specific event\") }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -7488,
+        -2640
+      ],
+      "id": "1688997b-f190-4813-8bc1-2142d820035c",
+      "name": "Delete event1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "573lfmbs2lhmmusduv2e6164os@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Project Steve's Meetings"
+        },
+        "returnAll": true,
+        "timeMin": "={{ $fromAI('After', ``, 'string') }}",
+        "timeMax": "={{ $now.plus({ week: 4 }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        -7360,
+        -2640
+      ],
+      "id": "ad710ad7-fe85-4514-92e4-96432b7a08ee",
+      "name": "GetAll events1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "z4NFZWzZTAiEcGGs",
+          "name": "Google Calendar Steve"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $('Email').item.json.message }}"
+            },
+            {
+              "content": "=You are a helpful assistant and always respond in the language the user speaks. The current date is {{ $now }}.\n\n🧠 When a user sends a message that does not relate to calendar actions, use the LLM to respond normally.\n\n📅 When the user asks to manage the calendar:\n\n🔨 Creating an Event:\n\n- Use the create event tool.\n- Only allow bookings between 8:00 AM and 8:00 PM.\n- Before booking, use the get event tool to check the selected time:\n- If the time is already booked, reject the booking.\n\nEnforce a 30-minute buffer after the existing event ends — no booking should start during this buffer.\n\n✍️ For the event description, include the following if available:\n\n- Name of the person\n- Email address\n- Phone number\n- Meeting time\n- Meeting purpose or title (if inferred)\n- Any relevant context (e.g., \"to discuss proposal\", \"follow-up call\")\n\n🗑️ Deleting an Event:\nUse the delete event tool.\n\n🕵️ Getting Event Info:\nUse the get event tool to answer questions about a date or specific event.\n\n📝 Updating an Event:\nUse the update event tool if the user wants to change any details.",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -7648,
+        -2864
+      ],
+      "id": "43c26d82-8698-456b-a95c-c023b6365395",
+      "name": "Message a model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $('Email Trigger (IMAP)').item.json.textPlain }}"
+            },
+            {
+              "content": "=You are a helpful assistant and answer in the language that the person talks to you. The current date is{{ $now }}\n\nYou use the LLM when nothing is asked about the calendar. When asked to create an event, use the create event tool. When an event has to be deleted, use the delete tool. When asked about an event or a specific date, use the get tool. When something needs to be updated, use the update tool.",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -7648,
+        -2384
+      ],
+      "id": "1ecb7729-d4a9-4b2b-9e7b-d938de114983",
+      "name": "Message a model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "52hBaVyJevbvyOiu",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://crm.businessstartupqatar.com/rest/people?filter=emails.primaryEmail[eq]:{{ $json.primaryEmail }}&depth=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer REDACTED"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -6704,
+        -2768
+      ],
+      "id": "694c26a3-06ba-4410-aca2-62b31c322fff",
+      "name": "Get_PersonByEmail"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cbd617fb-d6ab-4906-a171-d711a9be5b5b",
+              "leftValue": "={{ $json.data.people.length }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -6480,
+        -2768
+      ],
+      "id": "a29f51ad-56c8-479d-b219-5342454505fe",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://crm.businessstartupqatar.com/rest/people",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=Authorization",
+              "value": "Bearer REDACTED"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": {\n    \"firstName\": {{ JSON.stringify($('Edit Fields7').item.json.FirstName.replace(/\\n/g, '').trim()) }},\n    \"lastName\": {{ JSON.stringify($('Edit Fields7').item.json.lastName.replace(/\\n/g, '').trim()) }}\n\n  },\n  \"emails\": {\n    \"primaryEmail\": {{ JSON.stringify($('Edit Fields7').item.json.primaryEmail.replace(/\\n/g, '').trim()) }},\n    \"additionalEmails\": null\n  },\n  \"linkedinLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"xLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"phones\": {\n    \"primaryPhoneNumber\": \"\",\n    \"primaryPhoneCallingCode\": \"\",\n    \"primaryPhoneCountryCode\": \"\",\n    \"additionalPhones\": []\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -6256,
+        -2672
+      ],
+      "id": "2529fdad-45ec-4d76-889c-08fb13b162f6",
+      "name": "CreatePerson_Email"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f3281ed7-ab42-49ac-b009-b57d1789d8bc",
+              "name": "FirstName",
+              "value": "={{ $('Email').item.json.name.split(' ')[0] }}\n",
+              "type": "string"
+            },
+            {
+              "id": "ce97a18b-e1f7-429e-8fa0-58ad07272d7f",
+              "name": "lastName",
+              "value": "={{ $('Email').item.json.name.split(' ').length > 1 ? $('Email').item.json.name.split(' ').slice(1).join(' ') : '' }}\n",
+              "type": "string"
+            },
+            {
+              "id": "1504f20d-01f9-4c22-9951-8609a6ed2a49",
+              "name": "primaryEmail",
+              "value": "={{ $('Email').item.json['only email'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -6928,
+        -2768
+      ],
+      "id": "dd6b2a1b-e8c5-41e7-aa9c-4e4688ca3d1b",
+      "name": "Edit Fields7"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://crm.businessstartupqatar.com/rest/people/{{ $('Get_PersonByEmail').item.json.data.people[0].timelineActivities[0].personId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=Authorization",
+              "value": "Bearer REDACTED"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": {\n    \"firstName\": {{ JSON.stringify($('Edit Fields7').item.json.FirstName.replace(/\\n/g, '').trim()) }},\n    \"lastName\": {{ JSON.stringify($('Edit Fields7').item.json.lastName.replace(/\\n/g, '').trim()) }}\n\n  },\n  \"emails\": {\n    \"primaryEmail\": {{ JSON.stringify($('Edit Fields7').item.json.primaryEmail.replace(/\\n/g, '').trim()) }},\n    \"additionalEmails\": null\n  },\n  \"linkedinLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"xLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"phones\": {\n    \"primaryPhoneNumber\": \"\",\n    \"primaryPhoneCallingCode\": \"\",\n    \"primaryPhoneCountryCode\": \"\",\n    \"additionalPhones\": []\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -6256,
+        -2864
+      ],
+      "id": "57b4581f-38d4-4fb9-b6f3-fd54f8b183b0",
+      "name": "CreatePerson_Email1"
+    },
+    {
+      "parameters": {
+        "url": "=https://crm.businessstartupqatar.com/rest/people?filter=emails.primaryEmail[eq]:{{ $json.primaryEmail }}&depth=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer REDACTED"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -6704,
+        -2384
+      ],
+      "id": "dbf0c4fc-920d-4b01-993d-342594ec87ae",
+      "name": "Get_PersonByEmail1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cbd617fb-d6ab-4906-a171-d711a9be5b5b",
+              "leftValue": "={{ $json.data.people.length }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -6480,
+        -2384
+      ],
+      "id": "1db665ad-165b-48fb-b277-02d1ede0b34b",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://crm.businessstartupqatar.com/rest/people",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=Authorization",
+              "value": "Bearer REDACTED"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": {\n    \"firstName\": {{ JSON.stringify($('Edit Fields').item.json.FirstName.replace(/\\n/g, '').trim()) }},\n    \"lastName\": {{ JSON.stringify($('Edit Fields').item.json.lastName.replace(/\\n/g, '').trim()) }}\n\n  },\n  \"emails\": {\n    \"primaryEmail\": {{ JSON.stringify($('Edit Fields').item.json.primaryEmail.replace(/\\n/g, '').trim()) }},\n    \"additionalEmails\": null\n  },\n  \"linkedinLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"xLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"phones\": {\n    \"primaryPhoneNumber\": \"\",\n    \"primaryPhoneCallingCode\": \"\",\n    \"primaryPhoneCountryCode\": \"\",\n    \"additionalPhones\": []\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -6256,
+        -2288
+      ],
+      "id": "870eb63d-733d-400c-9f6e-f82a46f479a2",
+      "name": "CreatePerson_Email2"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://crm.businessstartupqatar.com/rest/people/{{ $('Get_PersonByEmail1').item.json.data.people[0].timelineActivities[0].personId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=Authorization",
+              "value": "Bearer REDACTED"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": {\n    \"firstName\": {{ JSON.stringify($('Edit Fields').item.json.FirstName.replace(/\\n/g, '').trim()) }},\n    \"lastName\": {{ JSON.stringify($('Edit Fields').item.json.lastName.replace(/\\n/g, '').trim()) }}\n\n  },\n  \"emails\": {\n    \"primaryEmail\": {{ JSON.stringify($('Edit Fields').item.json.primaryEmail.replace(/\\n/g, '').trim()) }},\n    \"additionalEmails\": null\n  },\n  \"linkedinLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"xLink\": {\n    \"primaryLinkLabel\": \"\",\n    \"primaryLinkUrl\": \"\",\n    \"additionalLinks\": []\n  },\n  \"phones\": {\n    \"primaryPhoneNumber\": \"\",\n    \"primaryPhoneCallingCode\": \"\",\n    \"primaryPhoneCountryCode\": \"\",\n    \"additionalPhones\": []\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -6256,
+        -2480
+      ],
+      "id": "fa663140-9835-4a43-b324-6730b688a123",
+      "name": "CreatePerson_Email3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2.1,
+      "position": [
+        -8864,
+        -2576
+      ],
+      "id": "571528e8-8288-4905-8a3d-611fe1cb9f45",
+      "name": "Email Trigger (IMAP)",
+      "credentials": {
+        "imap": {
+          "id": "kdZxDXVTPsQK5m1a",
+          "name": "IMAP STEVE WORK"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Email Trigger (IMAP)').item.json.to }}",
+        "toEmail": "={{ $('Email Trigger (IMAP)').item.json.from }}",
+        "subject": "={{ $('Email Trigger (IMAP)').item.json.subject }}",
+        "html": "={{ $json.message.content }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        -7120,
+        -2688
+      ],
+      "id": "82ab22e4-6203-487b-92de-7fff24a079f6",
+      "name": "Send email",
+      "webhookId": "41bd31fc-0632-4cf6-80d2-410f40c9a881",
+      "credentials": {
+        "smtp": {
+          "id": "Ae6FMeYlJK05CGiq",
+          "name": "SMTP account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Email Trigger (IMAP)').item.json.to }}",
+        "toEmail": "={{ $('Email Trigger (IMAP)').item.json.from }}",
+        "subject": "={{ $('Email Trigger (IMAP)').item.json.subject }}",
+        "html": "={{ $json.message.content }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        -7184,
+        -2416
+      ],
+      "id": "049fce7c-f488-4c63-930d-4c631c42eccb",
+      "name": "Send email2",
+      "webhookId": "41bd31fc-0632-4cf6-80d2-410f40c9a881",
+      "credentials": {
+        "smtp": {
+          "id": "Ae6FMeYlJK05CGiq",
+          "name": "SMTP account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f3281ed7-ab42-49ac-b009-b57d1789d8bc",
+              "name": "FirstName",
+              "value": "={{ $('Email').item.json.name.split(' ')[0] }}\n",
+              "type": "string"
+            },
+            {
+              "id": "ce97a18b-e1f7-429e-8fa0-58ad07272d7f",
+              "name": "lastName",
+              "value": "={{ $('Email').item.json.name.split(' ').length > 1 ? $('Email').item.json.name.split(' ').slice(1).join(' ') : '' }}\n",
+              "type": "string"
+            },
+            {
+              "id": "1504f20d-01f9-4c22-9951-8609a6ed2a49",
+              "name": "primaryEmail",
+              "value": "={{ $('Email').item.json['only email'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -6944,
+        -2368
+      ],
+      "id": "8bed3bd9-2b3f-4f37-8911-419b390754e2",
+      "name": "Edit Fields8"
+    }
+  ],
+  "pinData": {
+    "Email Trigger (IMAP)": [
+      {
+        "json": {
+          "textHtml": "<div dir=\"ltr\"><div dir=\"ltr\">Sure! I want to book the meeting tomorrow on 22th of July, at 10:00AM On Sun, Jul 20, 2025 at 10:44 PM</div></div>\r\n",
+          "textPlain": "Sure! I want to book the meeting tomorrow on 25th of July, at 10:00AM On\r\nSun, Jul 20, 2025 at 10:44 PM\r\n",
+          "metadata": {
+            "return-path": "<m.mahmud@thirdassalam.sch.qa>",
+            "authentication-results": " kundenserver.de; dkim=pass header.i=@thirdassalam-sch-qa.20230601.gappssmtp.com",
+            "received": "from mail-ed1-f47.google.com ([209.85.208.47]) by mx.kundenserver.de (mxeue101 [217.72.192.67]) with ESMTPS (Nemesis) id 1N4fOT-1uX5oF3FRv-018JuG for <work@businessstartupqatar.com>; Thu, 24 Jul 2025 17:55:28 +0200",
+            "dkim-signature": "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=thirdassalam-sch-qa.20230601.gappssmtp.com; s=20230601; t=1753372526; x=1753977326; darn=businessstartupqatar.com;        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject         :date:message-id:reply-to;        bh=qV1X+9PW3r3k6P0pBv/v+YeUf/H+RKpYgY66QlbU3EU=;        b=ONiLZO2LVRUccgk1fQtdtChONNau2gdk1abIStlJ0FiPA6Fisrlr4HrKS9E+SQbiD6         FQQ5dK2NDRxh+IyA2rvPZsxYmaGObpWS+ssxK4O3qkr12I56SQJSEpJNdJMy0IL8NVJw         f9Q6fqSEY5n41/usw+mrh80Vd9mraDBsQnWoIwuYGHZhcywijyK8CSjacloHPcB/jqNC         wBTgPTZI474AB4gUI7R2wELwhQmwAlda5O7RNnHR+FGI2NO7vspGLc5B1ROor/odG7LC         7tMPI4fZwcoWECkdsAIFV/2mqSihvcq2bxdqhq8TPS/wAE9EH3OeCThvvRurfKpgrPzB         rbbQ==",
+            "x-google-dkim-signature": "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20230601; t=1753372526; x=1753977326;        h=to:subject:message-id:date:from:mime-version:x-gm-message-state         :from:to:cc:subject:date:message-id:reply-to;        bh=qV1X+9PW3r3k6P0pBv/v+YeUf/H+RKpYgY66QlbU3EU=;        b=OPyu+yBF95kqja2eFZ9kn2ZAqfkYTLqUun+sZL/wSO0HBAMsHGsEQytfw80HPSHyB0         eEPzcK0U6Gc8rpReighKS30wOOP9f4QQZaBz3ZPcRoZBw8tuiHMsHvy7iKC+Z+/JZhtE         01Mg/Pw6wQsZYDM0X3c9+Ef0N2MfcuY2rcy+H7OnsU7AwnT5FtxJAch1MvepVQtbTZqC         LnOYEc/U9cY06Ev5fIKX+LrfcW8/+uluau/TnJvjNUljl+tqPANaBArpdtySY1/mche5         8P+c08cS1u5UAwI0dGwmPVXCO6QLeMPrtUnu0mJdFCjHQ9/QhHhc3riyEbLiWuaFBN8s         UsHg==",
+            "x-gm-message-state": "AOJu0YwzmYuOYBXAMvcEIQy1sO5CnnGGU4/hYcCmQQTWlLoF4mzzZnIK\tZCFQAepOjiYpA5hCkmTTm9O4bfgagZjDSIPHOKNCI1t5LAH7SjOZCzj52YbMtm3pH04qYszd6vp\tdU863HTbu+gz/bCz4f32wSPzCWYIcOq8J2ykeN1xHoO/6R4KuBuYijZ3wyw==",
+            "x-gm-gg": "ASbGncvFXHqdkDCflvY9B/c1cBHd7fKgI8XDxJTXKPDek5h9clEoy/TUqBBWQKT138I\tyPb2zaiRcma5qGQLkiCaySLSrlwgn8O37HsQdabeqiV0H+oiheqiy3lWgvzmqyD0pAbzHFQfzlP\tuZ61U9tRakHEBYRlgfifvGz28x0LrJD+MMNZ4OBvLf65hJyslwBhFNkC8mkS0j3sNGvdlG2VEur\tRZ6vX7i",
+            "x-google-smtp-source": "AGHT+IHX9BN3gje5kC0J+G9k9cVX6ySrBZlwYZ3VQKvRYANuztqsfL894dYjgNbBu3yY0cZ9SLSIUAXsW/t7dIfIwxw=",
+            "x-received": "by 2002:a17:906:c10c:b0:aec:578e:caf2 with SMTP id a640c23a62f3a-af2f885797dmr822800066b.29.1753372525544; Thu, 24 Jul 2025 08:55:25 -0700 (PDT)",
+            "mime-version": "1.0",
+            "x-gm-features": "Ac12FXxkY-0xbCAJGc3SCOChAdV6v3yhlYRuO9gf3S99r8DDqqBn68e4WC3faBE",
+            "message-id": "<CABCbL2bhCrSseEuqkKYqHVFkydjzCL4nQq_2fsB7sjtUbDtt0w@mail.gmail.com>",
+            "content-type": "multipart/alternative; boundary=\"0000000000008b5954063aaedaa5\"",
+            "envelope-to": "<work@businessstartupqatar.com>",
+            "x-spam-flag": "NO",
+            "ui-inboundreport": "notjunk:1;M01:P0:VQqJmR3qqhQ=;AbmlnoDNszyjAizl/cfBwFwLUlKt MsJQ+/Y5DwIPd99xjoF341onxpY7Te1OQMW8BCCXHbqti9MTg4Kr/OcwBSRgwp7b+H/DTpLQF EXkddGvlqesVHT38T+SI8pPRdVkuD8V56cAqOfGkzANVXbpJpR8sK8C8QCntRtArnoxwxcj+A P5UnPxnx0SoWuBPgaJ6TDMeBzConM0aXY6pz8EJk+YCXNA6gBnG8gZUP8PKo8e8xKiqxo+4rO TnH0hmjRF+uJw6lD+8A1yhfUIK5EC1ZCd7FpSISQVvYo2gfkrYomYXfhF98uh9ANY4mLH0Qwo t713wJgzx2dgsaK/I35wsw7KK9jHNvo/rHixTFKTm3PcO1GhD5Ds/HYdoVu/qmQnrHHF0WGuh HHYqC9nQc2LYM/my25Bi4QaZYrEW72iq9kmrR5+xSExLvjH2XH2mlJmBPdr6WtU2Hh2v1+OwN 6WanDFYmqpbng621wNMX4f/liDUi9ySNkDEm5uN6ByjQG/4F85CZs800eGwZSsKD6RJqQwhY9 TTEmFJGiO+6aHpnyEDBycUeoaQWdlv9MC7nvSCxyTo60SKJRvsFk7+1ixDQnIZnpEOnyr1v+r etkFGOsHS26MDE3VuEMzPdHbvlxG6Zhchi50xhUc1UgDRjEt/F495GDzhrzqfaZrppMvWcNIL QuZIeoB4O/BskK8cHS7SSYgFxAbUg5v0qQlIZU8agao+mL7Uj8BxY9kmioO/BgIshlGKr2bun rp7bHkJozVQhOY2iw4xth3qwG51x9SgJNz1Yw18wJs/A3Lb+sGM0j1elF8Sw0/eTFJGLlWM29 Y1LRozxQVgzeVNW4I27w0hFBB4fpPHWVbl5nq3GJvbQb/mvRcE8wnmpq2LDwOdVO1RwqEoy1j Q4NSE9WY2YpSbzxMN4PEq6ztstaroNpL2IKU0PbMQkbrd0zqc1ErZgmUEN/de+xaLusFCjIN5 sNMt2xNQgafhAnNpyjdlWLL0nMvEqwhBykRm6vKDzVi4/jC1Dk7lQlXEpJgy6Td933oFUUDMb SdSEsin7WSHkPy57Vcgc34laib/Z1xvtEsVCfTuhf8gHNcxSOcVY2yQ0cAyBZhOBgueKbrIws uN0neoBgBaKrl5z5XWZjim3/o9wmCfx9Pc0zGYSYBEgsG2WzrWWJok3DKlgW3xQCQJInQEaDE L8mcwyT+I0T0MZTBv1rs36cpZU/nE8tHFfzS/zMqnGOht39TN5Mod2+o1lYN4ih60IoP/eoOG ykYcVRiJRN9rq8P3CADStYShJtB2sG4/hFY1rw8cEkbJNNM0xiBH9W7SLPpXftRQMn7UZDAGX Vx/p7+wxVgOiL1FefEZsw//FlVTt/dLcZj344O4Nm2zJhS8KfXhWnTg6mPSNFZBr8vLIUwyyy p1wF8yFLF0cZvXE2IGHDCak5263AAd3dfAbIXYauC35UUg+oawL8bG/pZ/ofcQ6zg5SNT2aI1 35p5ZX2rBjS6dKKZxkNPpDlqu1OJldq+OrVFPqUA97LH97hMP547fwhjo9MpwvERaZIH+kXLY vOamPsgUPeNfrgvlg90Mu1g9S6VJirPe3hqlZtIfEIGN2uFaC1JpiUeIKU/0AhT71mZJOIIiv r5sj8cjJZT8bJzSLu57WMOOw6P/sA5oI35HDzD5K82zHLXEDiqsuCp8s2KuywTFd42FrdHoLn ZBpqR3G13hPl+sY3ikS9lnlOvZeS2Q5heArqv6vGv5qH11CRJ06hNcwJ6mGE/4kU5yqmpyHSh uCo+pWOCSKRisThDcHJ0AWjwe0ceF+CEdwmqJwDcP5s9kXM9M/l78dKmWWEqOLIW9buV0tcAJ rZCXRjZY0oILgMf2k7VUE2nLPhDYGen7EIoTLG2MaFec5sRx1df3UdqRuTlZlbo5gYGlZ3l7/ VjlxnzKLi/x/lcRE449cNT/D2GDkMoKn+iDejJAPQtCJLH5RiBoMHE89U1IehmshdzEbC6Z0Z tgtRMke26WZLhCyyfAvpbGAYYbjFRjz/Hv2+Lp6gbgXzntveO5I/P2tkAH/jtfFUl2RsbeTMt 3OQr6DKe/oQgz//lY39vxWm4c9Ao02S28bawzysl92NFwsK4cLx7sRKjuK/Rc0Nm33Ffnmk1U n/ZbdkCMGl279iUgzGEQFpcj2+cApxU4k7lmHwqlcstMRb+3sFJjGDO6bcHKxQ/vdlsk07ro7 YCLznVLP2KK5HbPmMjzg9jJdoabrIuJqe3Pig/xxlCVml8Ed9aWs7jwLgfw+0sTwM4Cj1k1od bY3WCS8rPyzlmMSGWc1rX5CNfCspic9A+zogXn5RqQMBEY54bTAVcGitxpb2Lr75p0oY/2xWf up6G2wlVRXiMcJeAaeQhPOeAD5Wcp14UpgekOGhtMhHBH2X6xLJwPSqxaFcNRY8MWkqVv/dZV qoUNLcXkX+uImDFyRCutMIzCwrzIFxXUQ7gDjQYapgXJLy/v1WZtts9v4ORopn0/43jAq7qFc uvfOMATYpojKQWQt0TZQKkaeubo4G4WyAW1gvJw8p8CxCCa3S2wk3QlS+Z+YWkUQtxyok5Zo8 LE4ar7AylJ5xhxVLsAdbdWDN1D9Dbvcj85rkqbByq0D7AecbWDFbaFf5T9WyxoZUmndniy4OH zj9MN1mnxVt0umo5ocpWmaSEsSIb1giYNZw3EI3mcvN6JLcV3VtfmYpV9PXJAvlVJ50S1YHpi 593Afa0TI0wY+MUr4NjZ/5g8RWdWeWpf1f5/IPg9+vnBaRP9BR2wb1VpRz/whHhoEiXY7ynPW XKsNAgzAS7z7UHuviBsT6u2BgkFqvaho2wj/Kiq60vHb50qBbDFZMW3M4c3bmEDQVgqwPLtlW T+b4xeauqW/nv9VxMqsGMt2npIp7pB3frp3Y1bMfTNckZOpqv6Y6y3Twvf3Nd7+FTC8WPU9Cu xoJVxG+LwcWY4+/Lx0Yd0BVYRT0Zodaj9x5aVuxhU4HZAFwG9DUl7QrgmLqEjTXKL+lc5Pa2s seVDW2sW2EV8RY3ofrowAcWxNqj3f1jY/DKQc9G3YvXn/OaTnFNuuszHcrz3uNIrvtvddIhdI 6dnzW+3S832BI7/KcqWAPQFt/w7LcVEiPDFOqssEDoTp/y3pecOxfrUEL1+2y/CWZf6QMb/A3 Y3cBiu5hAVBGA7ZiMUcCg9V09KIk9moP2z4VMa1QKppp+E+fnV1cZOmMW98pk6fSIVzVBinDa BmxUYHOmwsO5HfgZPD4U95FAkZG0d6kAcOB7vRAsQpV2jC8nhW/kcmZWOpIOqFXCpe5AHwv+d ED7k+F0ApAoOT0pvrQKge8QSMSfbVDAIiLtaCZgIFX1gTK7HErs6p4SSosflMUFbeLSsSawsW uxiVJfnv9TKWnm8TQmY9QaHWeH16n/5/O1pX5YZFbwVZhAB+DFU/586tViAWbeLubH8bAbtub YY45ZqR9AkklIKNLpxxg6sQPZf3lQiRqCekMGCJjCNOSvSgiaflMldEpYc8B2zknNBc/AMSI+ 5FmNoWlguCFoWnmPLf2wLWgCoX/Cn5F/Wq8QWgtteW2NUxVBz5+P2vNUnP5KKwomcb6yFDp0z 5kNOAmUKCI4fnZGx6RhE+EAoxx6ck3+QN7FWJImmNM50dx4WVNzS/y0r7HAQ2BhPY2JGwqahg M0tOmAAzhRf8Lu6VfTEIuIZ7vKItexEO/tpb3rBJakFL9rC8egCEAXqUZtAOn9Ut8P5f7ci/Q B3w3h61qVrhL86mjYVA1hhh631VMRk2hfBXBKx2ldbo7qJn2QNM7kdczBe050RXNiRXKC+L7U VfvVXuLE/ZtfNfn8Edp6YMIZLrMpxjQyLEHSFMNrIkgqfOeIpuq0dEL/HkoSm27KNz0jgo0AM OVTvumOyXwIube+njOAA5WrJnPtT+gHC9KU9ZIifVilWAKOInWJSiVFrOEk0OSb6QNgRUxt"
+          },
+          "attributes": {
+            "uid": 2
+          },
+          "from": "Muntasir Mahmud <m.mahmud@thirdassalam.sch.qa>",
+          "date": "Thu, 24 Jul 2025 18:55:15 +0300",
+          "subject": "hello how are you doing",
+          "to": "work@businessstartupqatar.com"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Email": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "if",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "if": {
+      "main": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Message a model2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update calendar1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create event1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete event1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetAll events1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model1": {
+      "main": [
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model2": {
+      "main": [
+        [
+          {
+            "node": "Send email2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get_PersonByEmail": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "CreatePerson_Email1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CreatePerson_Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "Get_PersonByEmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get_PersonByEmail1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "CreatePerson_Email3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CreatePerson_Email2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Trigger (IMAP)": {
+      "main": [
+        [
+          {
+            "node": "Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields8": {
+      "main": [
+        [
+          {
+            "node": "Get_PersonByEmail1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "39b61307-c1f6-43ed-8f15-229d9dc02c9e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "29b0940c858f01075acc60cfebb83424e9330f9cae0db980f5aa9a36401e8edf"
+  },
+  "id": "fACTzVNyKGeB1d6f",
+  "tags": []
+}
